@@ -1,222 +1,647 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="kk">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Söz Marzhany Qazyna</title>
-    <style>
-      :root {
-        --bg: #f5f1e8;
-        --panel: #fffdf8;
-        --primary: #0e5b4c;
-        --primary-dark: #0a4339;
-        --accent: #d89b2d;
-        --text: #1f2a2a;
-        --muted: #5f6d6d;
-        --line: rgba(14, 91, 76, 0.18);
-      }
-
-      * { box-sizing: border-box; }
-
-      body {
-        margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
-        background: linear-gradient(180deg, #eef7f3 0%, var(--bg) 100%);
-        color: var(--text);
-      }
-
-      .container {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 40px 20px 80px;
-      }
-
-      .hero {
-        background: var(--panel);
-        border: 1px solid var(--line);
-        border-radius: 24px;
-        box-shadow: 0 18px 40px rgba(15, 35, 31, 0.08);
-        padding: 48px 32px;
-        display: grid;
-        grid-template-columns: 1.2fr 0.8fr;
-        gap: 28px;
-        align-items: center;
-      }
-
-      .eyebrow {
-        display: inline-block;
-        background: rgba(216, 155, 45, 0.12);
-        color: var(--primary-dark);
-        border: 1px solid rgba(216, 155, 45, 0.2);
-        padding: 8px 12px;
-        border-radius: 999px;
-        font-size: 12px;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-      }
-
-      h1 {
-        margin: 18px 0 14px;
-        font-size: clamp(2.4rem, 6vw, 4rem);
-        line-height: 1.08;
-        color: var(--primary-dark);
-      }
-
-      p {
-        margin: 0;
-        font-size: 1.08rem;
-        line-height: 1.7;
-        color: var(--muted);
-      }
-
-      .actions {
-        margin-top: 28px;
-        display: flex;
-        gap: 14px;
-        flex-wrap: wrap;
-      }
-
-      .btn {
-        display: inline-block;
-        padding: 14px 22px;
-        border-radius: 12px;
-        text-decoration: none;
-        font-weight: 700;
-        transition: transform 0.2s ease, opacity 0.2s ease;
-      }
-
-      .btn:hover { transform: translateY(-1px); }
-
-      .btn-primary {
-        background: var(--primary);
-        color: white;
-      }
-
-      .btn-secondary {
-        background: transparent;
-        border: 1px solid var(--line);
-        color: var(--primary-dark);
-      }
-
-      .card {
-        background: linear-gradient(135deg, #eaf6f2 0%, #fefaf0 100%);
-        border: 1px solid var(--line);
-        border-radius: 22px;
-        min-height: 300px;
-        display: grid;
-        place-items: center;
-        padding: 28px;
-      }
-
-      .mini-illustration {
-        width: 100%;
-        max-width: 300px;
-        aspect-ratio: 1;
-        border-radius: 24px;
-        background: radial-gradient(circle at top, #f7f0d7 0%, #dfeee8 38%, #b9d9d0 100%);
-        position: relative;
-        border: 1px solid rgba(14, 91, 76, 0.08);
-      }
-
-      .mini-illustration::before,
-      .mini-illustration::after {
-        content: "";
-        position: absolute;
-        border-radius: 18px;
-        background: rgba(14, 91, 76, 0.08);
-      }
-
-      .mini-illustration::before {
-        width: 68%;
-        height: 52%;
-        left: 16%;
-        top: 22%;
-        box-shadow: inset 0 0 0 8px rgba(14, 91, 76, 0.08);
-      }
-
-      .mini-illustration::after {
-        width: 42%;
-        height: 18%;
-        left: 29%;
-        bottom: 18%;
-        background: rgba(216, 155, 45, 0.35);
-      }
-
-      .stats {
-        margin-top: 34px;
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 18px;
-      }
-
-      .stat {
-        padding: 22px 18px;
-        background: rgba(255,255,255,0.65);
-        border: 1px solid var(--line);
-        border-radius: 18px;
-      }
-
-      .stat strong {
-        display: block;
-        font-size: 1.8rem;
-        color: var(--primary-dark);
-        margin-bottom: 6px;
-      }
-
-      .stat span {
-        color: var(--muted);
-        font-size: 0.95rem;
-      }
-
-      @media (max-width: 780px) {
-        .hero {
-          grid-template-columns: 1fr;
-          padding: 28px 20px;
-        }
-
-        .stats {
-          grid-template-columns: 1fr;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <section class="hero">
-        <div>
-          <span class="eyebrow">Live project</span>
-          <h1>Söz Marzhany Qazyna</h1>
-          <p>
-            An elegant digital space for language, knowledge, and discovery. This page is
-            prepared as a polished landing page for the project and is ready to be served through
-            GitHub Pages.
-          </p>
-          <div class="actions">
-            <a class="btn btn-primary" href="#">Explore</a>
-            <a class="btn btn-secondary" href="#">Learn more</a>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="mini-illustration" aria-label="Project illustration"></div>
-        </div>
-      </section>
-
-      <section class="stats">
-        <div class="stat">
-          <strong>1</strong>
-          <span>Landing page ready</span>
-        </div>
-        <div class="stat">
-          <strong>GitHub</strong>
-          <span>Pages supported</span>
-        </div>
-        <div class="stat">
-          <strong>Live</strong>
-          <span>Ready to publish</span>
-        </div>
-      </section>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fffdf7">
+  <title>Сөз маржаны – ой қазынасы</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #fffdf7; --white: #fff; --ink: #264653; --muted: #71817a;
+      --mint: #2a9d8f; --mint-pale: #e6f5f0; --gold: #f4a261; --gold-pale: #fff0dc;
+      --coral: #e7765e; --line: #e5e9dd; --shadow: 0 14px 36px #26465312;
+      --round: 20px; font-family: "Trebuchet MS", "Nunito", system-ui, sans-serif;
+      color: var(--ink); background: var(--paper);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-width: 320px; min-height: 100vh; background: radial-gradient(ellipse at 2% 12%, #f5e8ce55 0 2px, transparent 3px), radial-gradient(ellipse at 98% 86%, #d7eee355 0 2px, transparent 3px), var(--paper); background-size: 34px 34px, 42px 42px, auto; font-size: 18px; }
+    button, input, textarea { font: inherit; }
+    button { color: inherit; }
+    button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 3px solid #e6a544; outline-offset: 3px; }
+    .topbar { position: sticky; z-index: 10; top: 0; background: #fffdf7ee; backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+    .top-inner { max-width: 1240px; min-height: 72px; margin: auto; padding: 10px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { display: flex; align-items: center; gap: 11px; font-weight: 900; line-height: 1.15; }
+    .brand-mark { width: 43px; height: 43px; display: grid; place-items: center; border-radius: 15px 15px 15px 5px; background: var(--mint); color: white; font-size: 24px; }
+    .brand span { display: block; color: var(--mint); }
+    .top-actions, .grade-switch, .nav, .button-row, .task-nav, .swatches { display: flex; align-items: center; gap: 8px; }
+    .grade-switch { padding: 4px; background: #edf0e7; border-radius: 13px; }
+    .grade-switch button { border: 0; border-radius: 10px; padding: 9px 12px; background: transparent; color: var(--muted); font-weight: 900; cursor: pointer; }
+    .grade-switch button.active { background: white; color: var(--ink); box-shadow: 0 2px 8px #26465314; }
+    .pill { display: flex; align-items: center; gap: 6px; padding: 9px 12px; background: white; border: 1px solid var(--line); border-radius: 12px; font-size: 14px; font-weight: 900; white-space: nowrap; }
+    .pearl-pill { position: relative; }
+    .pearl-pop { position: absolute; top: -25px; right: 3px; z-index: 20; color: #a76a13; font-size: 15px; font-weight: 900; pointer-events: none; animation: pearlFloat 1.2s ease-out forwards; }
+    .pearl-pill.bump { animation: pearlBump .38s ease; }
+    @keyframes pearlFloat { 0% { opacity: 0; transform: translateY(8px) scale(.8); } 20% { opacity: 1; } 100% { opacity: 0; transform: translateY(-27px) scale(1.05); } }
+    @keyframes pearlBump { 50% { transform: scale(1.12); } }
+    .nav-wrap { overflow-x: auto; border-top: 1px solid #e9ebdf; scrollbar-width: none; }
+    .nav { width: max-content; min-width: 100%; max-width: 1240px; margin: auto; padding: 0 24px; gap: 3px; }
+    .nav button { position: relative; border: 0; padding: 13px 12px 15px; background: transparent; color: #78847e; font-weight: 900; font-size: 13px; white-space: nowrap; cursor: pointer; }
+    .nav button.active { color: var(--ink); }
+    .nav button.active::after { position: absolute; right: 12px; bottom: 0; left: 12px; height: 3px; border-radius: 4px 4px 0 0; background: var(--mint); content: ""; }
+    main { max-width: 1240px; margin: auto; padding: 28px 24px 70px; }
+    .view { display: none; animation: appear .28s ease both; }
+    .view.active { display: block; }
+    @keyframes appear { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: translateY(0); } }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { margin-bottom: 8px; font-size: clamp(29px, 4vw, 43px); line-height: 1.1; }
+    h2 { margin-bottom: 7px; font-size: 22px; }
+    p { line-height: 1.6; }
+    .eyebrow { color: var(--mint); font-weight: 900; font-size: 12px; letter-spacing: .04em; }
+    .muted, .page-heading p { color: var(--muted); }
+    .page-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 18px; margin: 3px 0 20px; }
+    .page-heading p { max-width: 690px; margin: 0; font-size: 16px; }
+    .badge { display: inline-flex; align-items: center; gap: 6px; padding: 8px 11px; border-radius: 99px; background: var(--mint-pale); color: #246d62; font-size: 13px; font-weight: 900; white-space: nowrap; }
+    .hero { display: grid; grid-template-columns: 1.05fr .95fr; min-height: 300px; overflow: hidden; border-radius: 27px; background: var(--ink); color: white; box-shadow: var(--shadow); }
+    .hero-copy { align-self: center; padding: 34px 38px; }
+    .hero .eyebrow { color: #ade4d7; }
+    .hero h1 { margin-top: 10px; font-size: clamp(35px, 5vw, 54px); }
+    .hero p { max-width: 560px; margin: 13px 0 20px; color: #d7e8e1; font-size: 17px; }
+    .hero-art { position: relative; display: grid; place-items: center; overflow: hidden; min-height: 280px; background: linear-gradient(145deg, #41a78c, #1d705f); }
+    .hero-art::before, .hero-art::after { position: absolute; width: 330px; height: 330px; border: 1px solid #ffffff36; border-radius: 50%; content: ""; }
+    .hero-art::after { width: 230px; height: 230px; }
+    .hero-book { z-index: 1; font-size: 105px; filter: drop-shadow(0 13px 10px #123b3850); animation: float 3s ease-in-out infinite; }
+    .hero-star { position: absolute; top: 24%; right: 23%; font-size: 42px; animation: twinkle 2s ease-in-out infinite; }
+    @keyframes float { 50% { transform: translateY(-9px) rotate(2deg); } }
+    @keyframes twinkle { 50% { transform: scale(1.2) rotate(12deg); } }
+    .button { display: inline-flex; min-height: 44px; align-items: center; justify-content: center; gap: 7px; padding: 10px 16px; border: 0; border-radius: 13px; background: var(--mint); color: white; font-weight: 900; cursor: pointer; transition: transform .2s, filter .2s, background .2s; }
+    .button:hover { filter: brightness(.95); transform: translateY(-2px); }
+    .button:active, .tile:active { transform: scale(.96); }
+    .button.gold { background: var(--gold); color: #513916; }
+    .button.soft { background: var(--mint-pale); color: var(--ink); }
+    .button.outline { border: 1px solid var(--line); background: white; color: var(--ink); }
+    .button.danger { background: #fff0e9; color: #944b3e; }
+    .button.small { min-height: 36px; padding: 7px 11px; font-size: 13px; }
+    .button:disabled { opacity: .55; cursor: not-allowed; transform: none; }
+    .home-strip { margin: 25px 0 14px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .home-strip h2 { margin: 0; }
+    .module-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .module-card, .panel, .tile { border: 1px solid var(--line); border-radius: var(--round); background: #ffffffeb; box-shadow: 0 8px 24px #26465308; backdrop-filter: blur(10px); }
+    .module-card { position: relative; min-height: 156px; padding: 18px; cursor: pointer; text-align: left; transition: transform .2s, box-shadow .2s; }
+    .module-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+    .module-icon { display: grid; width: 42px; height: 42px; margin-bottom: 12px; place-items: center; border-radius: 14px; background: var(--mint-pale); font-size: 23px; }
+    .module-card:nth-child(2) .module-icon, .module-card:nth-child(5) .module-icon { background: var(--gold-pale); }
+    .module-card strong, .module-card small { display: block; }
+    .module-card strong { margin-bottom: 5px; font-size: 17px; }
+    .module-card small { max-width: 260px; color: var(--muted); font-size: 13px; line-height: 1.45; }
+    .module-arrow { position: absolute; top: 19px; right: 18px; color: var(--mint); font-size: 20px; }
+    .panel { padding: 21px; }
+    .task-controls { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 15px; padding: 12px 15px; border: 1px solid var(--line); border-radius: 16px; background: #ffffffd9; }
+    .task-controls small { color: var(--muted); }
+    .task-nav { flex-wrap: wrap; justify-content: flex-end; }
+    .task-dots { display: flex; flex-wrap: wrap; gap: 4px; max-width: 450px; }
+    .task-dot { width: 10px; height: 10px; padding: 0; border: 0; border-radius: 50%; background: #dce5df; cursor: pointer; }
+    .task-dot.active { background: var(--mint); transform: scale(1.3); }
+    .task-dot.done { background: var(--gold); }
+    .task-step { min-width: 38px; height: 36px; border: 1px solid var(--line); border-radius: 10px; background: white; font-weight: 900; cursor: pointer; }
+    .task-card { display: grid; grid-template-columns: minmax(0, 1fr) 270px; gap: 18px; }
+    .task-main { min-height: 320px; }
+    .task-prompt { margin: 9px 0 17px; font-size: clamp(21px, 3vw, 27px); font-weight: 900; line-height: 1.35; }
+    .task-cue { display: grid; min-height: 95px; margin: 12px 0; place-items: center; color: var(--ink); font-size: clamp(45px, 8vw, 74px); }
+    .choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 14px; }
+    .choice { min-height: 54px; padding: 11px 14px; border: 2px solid var(--line); border-radius: 14px; background: white; cursor: pointer; font-size: 18px; font-weight: 900; text-align: left; transition: .18s ease; }
+    .choice:hover { border-color: #9dcfc1; background: #f5fbf8; transform: translateY(-1px); }
+    .choice.correct { border-color: #67b28e; background: #eaf7ed; }
+    .choice.incorrect { border-color: #e5a18e; background: #fff0e9; }
+    .choice:disabled { cursor: default; }
+    .feedback { min-height: 26px; margin: 13px 0 0; color: #287459; font-weight: 900; }
+    .reward-panel { display: flex; flex-direction: column; justify-content: space-between; padding: 19px; border-radius: 17px; background: var(--mint-pale); }
+    .reward-panel .big { margin: 3px 0; color: var(--mint); font-size: 36px; font-weight: 900; }
+    .progress-track { height: 9px; overflow: hidden; border-radius: 99px; background: #d9e7df; }
+    .progress-track span { display: block; height: 100%; border-radius: inherit; background: var(--mint); transition: width .3s; }
+    .story-text, .value-text { padding: 15px; border-radius: 15px; background: #fff9e9; font-size: 19px; line-height: 1.7; }
+    .story-steps { display: grid; gap: 8px; margin: 14px 0; }
+    .story-step { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 13px; background: white; }
+    .story-step .step-text { flex: 1; font-weight: 800; }
+    .step-number { display: grid; width: 31px; height: 31px; flex: 0 0 auto; place-items: center; border-radius: 10px; background: var(--mint-pale); color: #246d62; font-weight: 900; }
+    .sequence-cue { display: grid; width: 40px; height: 40px; flex: 0 0 auto; place-items: center; border-radius: 12px; background: var(--gold-pale); font-size: 23px; }
+    .move-buttons { display: flex; gap: 4px; }
+    .move-buttons button { width: 34px; height: 34px; border: 1px solid var(--line); border-radius: 9px; background: white; font-weight: 900; cursor: pointer; }
+    .writing-area { width: 100%; min-height: 140px; padding: 12px; resize: vertical; border: 1px solid var(--line); border-radius: 13px; background: repeating-linear-gradient(white, white 31px, #e8eee4 32px); line-height: 32px; }
+    .connector { border: 0; border-radius: 99px; padding: 7px 10px; background: var(--gold-pale); font-weight: 900; cursor: pointer; }
+    .canvas-layout { display: grid; grid-template-columns: minmax(0, 1fr) 290px; gap: 16px; }
+    .canvas-wrap { overflow: hidden; border: 1px solid #e5e8dc; border-radius: 15px; background: #fffefa; }
+    #writingCanvas { display: block; width: 100%; height: 310px; touch-action: none; cursor: crosshair; }
+    .tool-group { margin: 15px 0; }
+    .tool-label { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px; font-weight: 900; }
+    input[type="range"] { width: 100%; accent-color: var(--mint); }
+    .swatch { width: 29px; height: 29px; border: 3px solid white; border-radius: 50%; box-shadow: 0 0 0 1px var(--line); cursor: pointer; }
+    .swatch.active { box-shadow: 0 0 0 3px var(--gold); }
+    .values-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 15px; }
+    .value-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px; align-content: start; }
+    .value-tab { min-height: 42px; padding: 8px; border: 1px solid var(--line); border-radius: 11px; background: white; cursor: pointer; font-size: 13px; font-weight: 900; text-align: left; }
+    .value-tab.active { border-color: var(--mint); background: var(--mint-pale); }
+    .value-text { margin: 12px 0; }
+    .achievement-list, .log-list, .reward-list { display: grid; gap: 10px; }
+    .achievement-row, .log-row, .reward-row { display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid var(--line); border-radius: 13px; background: white; }
+    .achievement-row > div, .log-row > div, .reward-row > div { flex: 1; }
+    .achievement-icon { display: grid; width: 40px; height: 40px; place-items: center; border-radius: 12px; background: var(--gold-pale); font-size: 21px; }
+    .achievement-row small, .log-row small, .reward-row small { display: block; margin-top: 3px; color: var(--muted); }
+    .meter { height: 8px; margin-top: 7px; overflow: hidden; border-radius: 99px; background: #edf0e8; }
+    .meter span { display: block; height: 100%; border-radius: inherit; background: var(--mint); }
+    .split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 15px; }
+    .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; margin-bottom: 18px; }
+    .stat-box { padding: 14px; border-radius: 14px; background: #f3f8f3; }
+    .stat-box strong { display: block; font-size: 25px; }
+    .stat-box small { color: var(--muted); }
+    .certificate { padding: 28px 20px; border: 3px double #d3b35f; border-radius: 17px; background: #fff9e4; text-align: center; }
+    .certificate .award-icon { font-size: 36px; }
+    .certificate h2 { color: #9d7421; }
+    .name-input, .form-input { width: 100%; min-height: 43px; padding: 9px 11px; border: 1px solid var(--line); border-radius: 11px; background: white; }
+    .form-row { display: grid; grid-template-columns: 1fr 110px auto; gap: 8px; }
+    .helper { position: fixed; z-index: 11; right: 18px; bottom: 16px; display: flex; align-items: flex-end; gap: 8px; max-width: min(320px, calc(100vw - 24px)); }
+    .helper-face { width: 54px; height: 54px; flex: 0 0 auto; display: grid; place-items: center; border: 3px solid white; border-radius: 19px 19px 19px 7px; background: var(--gold); box-shadow: var(--shadow); font-size: 29px; animation: float 2.4s ease-in-out infinite; }
+    .helper-bubble { padding: 11px 13px; border: 1px solid var(--line); border-radius: 16px 16px 5px 16px; background: #fffffff2; box-shadow: var(--shadow); font-size: 12px; font-weight: 800; line-height: 1.45; }
+    .helper-bubble strong { display: block; color: var(--mint); font-size: 13px; }
+    .ornament { position: fixed; z-index: -1; color: #2a9d8f22; font-size: 38px; pointer-events: none; animation: float 7s ease-in-out infinite; }
+    .ornament.one { top: 23%; left: 2%; }.ornament.two { right: 3%; bottom: 25%; animation-delay: -3s; }
+    #confetti { position: fixed; z-index: 30; inset: 0; pointer-events: none; }
+    #toast { position: fixed; z-index: 40; right: 20px; bottom: 91px; max-width: min(400px, calc(100vw - 40px)); padding: 12px 16px; border-radius: 13px; background: var(--ink); color: white; box-shadow: var(--shadow); font-weight: 900; opacity: 0; transform: translateY(10px); transition: .22s; pointer-events: none; }
+    #toast.show { opacity: 1; transform: translateY(0); }
+    .empty { padding: 20px; color: var(--muted); text-align: center; }
+    .ornament-border { border: 1px solid #d5bd8b; background-image: repeating-linear-gradient(45deg, transparent 0 10px, #d5bd8b20 10px 12px, transparent 12px 22px); }
+    .pearl-pop { animation: pearlDrop .85s cubic-bezier(.2,.8,.25,1) both; }
+    @keyframes pearlDrop { 0% { opacity: 0; transform: translateY(-22px) scale(.45); } 65% { opacity: 1; transform: translateY(4px) scale(1.2); } 100% { transform: translateY(0) scale(1); } }
+    .notice-list { display: grid; gap: 8px; margin: 12px 0; }
+    .notice { display: flex; align-items: center; gap: 10px; padding: 12px; border: 1px solid #e8d39b; border-radius: 14px; background: #fff8df; }
+    .notice > span:nth-child(2) { flex: 1; }
+    @media print {
+      body * { visibility: hidden !important; }
+      #printCertificate, #printCertificate * { visibility: visible !important; }
+      #printCertificate { position: fixed; inset: 8%; display: grid; align-content: center; border: 4px double #bd983e; background: #fff9e4; }
+      #printCertificate button, #printCertificate input { display: none !important; }
+    }
+    @media (max-width: 760px) {
+      .top-inner { align-items: flex-start; flex-wrap: wrap; padding: 10px 14px; }
+      .top-actions { flex-wrap: wrap; justify-content: flex-end; }
+      main { padding: 20px 14px 85px; }
+      .nav { padding: 0 10px; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-art { min-height: 180px; }
+      .module-grid { grid-template-columns: repeat(2, 1fr); }
+      .task-card, .canvas-layout, .split { grid-template-columns: 1fr; }
+      .reward-panel { min-height: 170px; }
+      .values-grid { grid-template-columns: 1fr; }
+      .value-list { grid-template-columns: repeat(3, 1fr); }
+      .page-heading { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 480px) {
+      .brand { min-width: auto; font-size: 13px; }
+      .brand-mark { width: 37px; height: 37px; }
+      .top-actions { gap: 5px; }
+      .pill { padding: 8px; font-size: 12px; }
+      .grade-switch button { padding: 8px; font-size: 12px; }
+      .module-grid { grid-template-columns: 1fr; }
+      .module-card { min-height: 130px; }
+      .choices { grid-template-columns: 1fr; }
+      .task-controls { align-items: flex-start; flex-direction: column; }
+      .task-nav { justify-content: flex-start; }
+      .value-list { grid-template-columns: repeat(2, 1fr); }
+      .stat-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr 86px; }
+      .form-row .button { grid-column: 1 / -1; }
+      .helper { right: 8px; bottom: 8px; }
+      .helper-bubble { max-width: 220px; }
+    }
+  </style>
+</head>
+<body>
+  <span class="ornament one" aria-hidden="true">❋</span><span class="ornament two" aria-hidden="true">✦</span>
+  <header class="topbar">
+    <div class="top-inner">
+      <div class="brand"><div class="brand-mark" aria-hidden="true">🏠</div><div>Сөз маржаны<span>ой қазынасы</span></div></div>
+      <div class="top-actions">
+        <div class="grade-switch" role="group" aria-label="Сыныпты таңдау"><button data-grade="1">1-сынып</button><button data-grade="2">2-сынып</button></div>
+        <div class="pill pearl-pill" id="pearlPill" aria-label="Білім маржандары"><span>🦪</span><span id="pearlCount">0</span></div>
+        <div class="pill" aria-label="Жұлдыз"><span>⭐</span><span id="starCount">0</span></div>
+      </div>
     </div>
-  </body>
+    <div class="nav-wrap"><nav class="nav" aria-label="Негізгі мәзір">
+      <button class="active" data-view="home">Басты бет</button>
+      <button data-view="vocabulary">Сөз сандығы</button>
+      <button data-view="story">Ойдан – мәтінге</button>
+      <button data-view="calligraphy">Көркем жазу</button>
+      <button data-view="values">Құндылықтар & мәтін талдау</button>
+      <button data-view="tongue">Тіл ұстартқыш</button>
+      <button data-view="rewards">Ой сандығы</button>
+      <button data-view="parent">Байғазы порталы</button>
+    </nav></div>
+  </header>
+  <main><div id="app"></div></main>
+  <div class="helper" aria-live="polite"><div class="helper-face" aria-hidden="true">🦉</div><div class="helper-bubble" id="helperBubble"><strong>Зерек</strong>Сәлем! Бірге оқуға дайынсың ба?</div></div>
+  <div id="toast" role="status" aria-live="polite"></div><canvas id="confetti"></canvas>
+  <script>
+    (() => {
+      "use strict";
+      const $ = (selector, root = document) => root.querySelector(selector);
+      const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+      const KEY = "soz-marzhan-grade12-v2";
+
+      const vocab1 = [
+        ["👄","Қай буындардан «ана» сөзі шығады?",["а-на","на-а","ба-ла"],"а-на"],
+        ["🐟","Суретке сай сөзді тап.",["балық","қала","доп"],"балық"],
+        ["🌞","«Ана» сөзінің соңғы дыбысы қандай?",["А","Н","М"],"А"],
+        ["🌙","Қай сөз «күн» сөзіне қарама-қарсы?",["түн","таң","жарық"],"түн"],
+        ["🐈","Қай сөз артық: мысық, күшік, алма?",["мысық","күшік","алма"],"алма"],
+        ["🧒","«Ба-ла» буындарын қос.",["бала","ала","бал"],"бала"],
+        ["🍎","Қай сөз суретті атайды?",["алма","алға","ата"],"алма"],
+        ["🙂","«Әдемі» сөзіне жақын сөзді таңда.",["сұлу","суық","ұзын"],"сұлу"],
+        ["⬆️","«Биік» сөзінің қарсы мағынасы қандай?",["аласа","алыс","жуан"],"аласа"],
+        ["🐄","Қай сөз артық: сиыр, қой, кітап?",["сиыр","қой","кітап"],"кітап"],
+        ["🏠","«Үй» сөзін буынға бөл.",["үй","ү-й","ұ-й"],"үй"],
+        ["🌷","Суретке сай сөзді тап.",["гүл","көл","жел"],"гүл"],
+        ["💧","«Су» сөзінде неше буын бар?",["1","2","3"],"1"],
+        ["🧊","«Ыстық» сөзінің қарсы мағынасы қандай?",["суық","жылы","аппақ"],"суық"],
+        ["🚗","Қай сөз артық: автобус, машина, қасық?",["автобус","машина","қасық"],"қасық"],
+        ["🐦","«Құс» сөзінің бірінші дыбысы қандай?",["Қ","Ұ","С"],"Қ"],
+        ["📚","Суретке сай сөзді тап.",["кітап","қалам","дәптер"],"кітап"],
+        ["🤝","Досың саған көмектесті. Не дейсің?",["Рақмет!","Кешір!","Сау бол!"],"Рақмет!"],
+        ["🌱","«Үлкен» сөзінің қарсы мағынасы қандай?",["кіші","жақсы","жұмсақ"],"кіші"],
+        ["🍞","Қай сөз артық: нан, сүт, доп?",["нан","сүт","доп"],"доп"]
+      ];
+      const vocab2 = [
+        ["🧩","«Балмұздақ» сөзін буынға бөл.",["бал-мұз-дақ","балмұз-дақ","бал-мұздақ"],"бал-мұз-дақ"],
+        ["🦋","Суретке сай сөзді таңда.",["көбелек","қоңыз","торғай"],"көбелек"],
+        ["😄","«Қуанышты» сөзіне мағыналас сөзді тап.",["шат","мұңды","баяу"],"шат"],
+        ["🌑","«Жарық» сөзінің қарсы мағынасы қандай?",["қараңғы","ашық","жылы"],"қараңғы"],
+        ["🍐","Қай сөз артық: алма, алмұрт, қарындаш?",["алма","алмұрт","қарындаш"],"қарындаш"],
+        ["🪟","«Терезе» сөзінде неше буын бар?",["3","2","4"],"3"],
+        ["🐇","«Жүйрік» сөзіне жақын сөзді таңда.",["шапшаң","әлсіз","жай"],"шапшаң"],
+        ["🌧️","«Құрғақ» сөзінің қарсы мағынасы қандай?",["ылғал","жылы","таза"],"ылғал"],
+        ["🧹","Қай сөз артық: сыпырғыш, шелек, түлкі?",["сыпырғыш","шелек","түлкі"],"түлкі"],
+        ["🏫","«Мектеп» сөзін буынға бөл.",["мек-теп","ме-ктеп","мект-еп"],"мек-теп"],
+        ["🐴","Суретке сай сөзді тап.",["жылқы","қоян","қасқыр"],"жылқы"],
+        ["💪","«Күшті» сөзіне мағыналас сөзді таңда.",["қуатты","әлсіз","жіңішке"],"қуатты"],
+        ["🧼","«Таза» сөзінің қарсы мағынасы қандай?",["лас","әдемі","ақ"],"лас"],
+        ["🌳","Қай сөз артық: қайың, терек, дәптер?",["қайың","терек","дәптер"],"дәптер"],
+        ["🧺","«Себет» сөзінде неше буын бар?",["2","1","3"],"2"],
+        ["🕊️","«Мейірімді» сөзіне жақын сөзді тап.",["қайырымды","қатал","сараң"],"қайырымды"],
+        ["🧭","«Жақын» сөзінің қарсы мағынасы қандай?",["алыс","жарық","биік"],"алыс"],
+        ["🥛","Қай сөз артық: айран, сүт, қарға?",["айран","сүт","қарға"],"қарға"],
+        ["🌈","«Кемпірқосақ» сөзінде неше буын бар?",["4","3","5"],"4"],
+        ["🪁","«Кең» сөзінің қарсы мағынасы қандай?",["тар","үлкен","ұзын"],"тар"]
+      ];
+
+      const stories = [
+        {title:"Кішкентай көшет",icon:"🌱",character:"Айша",ending:"Көшет өсе бастады.",lesson:"Көшет өсе бастады.",steps:["Айша ауладан көшет көрді.","Ол әкесін көмекке шақырды.","Екеуі көшетті жерге отырғызды.","Айша оған су құйды."],text:"Айша ауладан көшет көрді. Ол әкесін көмекке шақырды. Екеуі көшетті отырғызды. Айша оған су құйды.",moral:"Қамқорлық"},
+        {title:"Жоғалған доп",icon:"⚽",character:"Әли",ending:"Балалар допты бірге тапты.",lesson:"Балалар допты бірге тапты.",steps:["Әли доппен ойнады.","Доп бұтаның ішіне кіріп кетті.","Досы екеуі допты іздеді.","Олар допты бірге тапты."],text:"Әли аулада доппен ойнады. Доп бұтаның ішіне кіріп кетті. Әли досынан көмек сұрады. Екеуі допты тауып алды.",moral:"Достық"},
+        {title:"Әдепті қонақ",icon:"🎁",character:"Аян",ending:"Аян үй иесіне рақмет айтты.",lesson:"Аян үй иесіне рақмет айтты.",steps:["Аян досының үйіне келді.","Ол есікті ақырын қақты.","Аян үлкендермен сәлемдесті.","Ол үй иесіне рақмет айтты."],text:"Аян досының үйіне қонаққа келді. Ол есікті ақырын қақты. Үйге кіріп, үлкендермен сәлемдесті. Қайтарда рақмет айтты.",moral:"Үлкенді құрметтеу"},
+        {title:"Құстарға жем",icon:"🐦",character:"Меруерт",ending:"Құстар жем жеді.",lesson:"Құстар жем жеді.",steps:["Күн суыта бастады.","Меруерт жемсалғыш жасады.","Оған дән салды.","Құстар келіп жем жеді."],text:"Күн суыта бастады. Меруерт құстарға жемсалғыш жасады. Ол оған дән салды. Құстар келіп, жем жеді.",moral:"Қамқорлық"},
+        {title:"Таза сынып",icon:"🧹",character:"Нұр",ending:"Сынып таза болды.",lesson:"Сынып таза болды.",steps:["Сабақ аяқталды.","Нұр едендегі қағазды көрді.","Ол қағазды жәшікке салды.","Сынып таза болды."],text:"Сабақ аяқталды. Нұр едендегі қағазды көрді. Ол қағазды жәшікке салды. Сынып таза болып қалды.",moral:"Еңбекқорлық"},
+        {title:"Адал жауап",icon:"✏️",character:"Сара",ending:"Сара шындықты айтты.",lesson:"Сара шындықты айтты.",steps:["Сара сурет салып отырды.","Су бояуы төгіліп кетті.","Сара мұғалімге барды.","Ол болған істі айтты."],text:"Сара сурет салып отырды. Су бояуы төгіліп кетті. Сара мұғалімге барды. Ол болған істі жасырмай айтты.",moral:"Адалдық"},
+        {title:"Әжеге көмек",icon:"🧺",character:"Дамир",ending:"Әжесі қуанып қалды.",lesson:"Әжесі қуанып қалды.",steps:["Дамир әжесіне қонаққа келді.","Әжесі сөмкесін көтеріп келе жатты.","Дамир сөмкені алуға көмектесті.","Әжесі қуанып қалды."],text:"Дамир әжесіне қонаққа келді. Әжесі ауыр сөмке көтеріп келе жатты. Дамир сөмкені алуға көмектесті. Әжесі оған рақмет айтты.",moral:"Қамқорлық"},
+        {title:"Бірге оқу",icon:"📖",character:"Айбек",ending:"Досы мәтінді өзі оқыды.",lesson:"Досы мәтінді өзі оқыды.",steps:["Айбек кітап оқып отырды.","Досы бір сөзді түсінбей қалды.","Айбек сөзді буынға бөлді.","Досы мәтінді өзі оқыды."],text:"Айбек кітап оқып отырды. Досы бір сөзді түсінбей қалды. Айбек оған буынға бөліп көрсетті. Досы мәтінді өзі оқып шықты.",moral:"Достық"},
+        {title:"Гүлге су",icon:"🌷",character:"Ләйлә",ending:"Гүл қайта жайқалды.",lesson:"Гүл қайта жайқалды.",steps:["Ләйлә терезедегі гүлді көрді.","Гүлдің топырағы құрғапты.","Ләйлә су құйды.","Гүл қайта жайқалды."],text:"Ләйлә терезедегі гүлді көрді. Оның топырағы құрғап қалыпты. Ләйлә гүлге су құйды. Біраздан соң гүл жайқалды.",moral:"Қамқорлық"},
+        {title:"Досқа орын",icon:"🪑",character:"Ермек",ending:"Жаңа бала ойынға қосылды.",lesson:"Жаңа бала ойынға қосылды.",steps:["Сыныпқа жаңа бала келді.","Балалар доп ойнамақ болды.","Ермек жаңа баланы шақырды.","Бала ойынға қосылды."],text:"Сыныпқа жаңа бала келді. Үзілісте балалар доп ойнамақ болды. Ермек оны ойынға шақырды. Жаңа бала қуанып, бірге ойнады.",moral:"Достық"},
+        {title:"Жол ережесі",icon:"🚦",character:"Алина",ending:"Алина жолдан қауіпсіз өтті.",lesson:"Алина жолдан қауіпсіз өтті.",steps:["Алина мектептен үйге қайтты.","Ол жол шетінде тоқтады.","Жасыл шам жанғанын күтті.","Алина жолдан қауіпсіз өтті."],text:"Алина мектептен үйге қайтты. Жолға жеткенде ол тоқтады. Жасыл шам жанғанын күтті. Содан кейін жолдан қауіпсіз өтті.",moral:"Қауіпсіздік"},
+        {title:"Туған жер",icon:"🇰🇿",character:"Мирас",ending:"Аула әдемі болып қалды.",lesson:"Аула әдемі болып қалды.",steps:["Мирас аулада серуендеді.","Ол жерде жатқан қоқысты көрді.","Қоқысты жәшікке салды.","Аула әдемі болып қалды."],text:"Мирас аулада серуендеді. Ол жерде жатқан қоқысты көрді. Қоқысты жәшікке салды. Туған жерін таза ұстағанына қуанды.",moral:"Отансүйгіштік"},
+        {title:"Шындықты айту",icon:"🤝",character:"Ақбота",ending:"Досы оған сенді.",lesson:"Досы оған сенді.",steps:["Ақбота ойыншықты сындырып алды.","Ол досының ойыншығы еді.","Ақбота досына шындықты айтты.","Досы оған сенді."],text:"Ақбота досының ойыншығын байқамай сындырып алды. Ол қатты уайымдады. Ақбота досына шындықты айтты. Екеуі оны бірге жөндеді.",moral:"Адалдық"},
+        {title:"Ағаш отырғызу",icon:"🌳",character:"Сынып",ending:"Ағаш аулада өсті.",lesson:"Ағаш аулада өсті.",steps:["Балалар аулаға шықты.","Олар кішкентай ағаш әкелді.","Балалар ағашты отырғызды.","Оған су құйып, күтім жасады."],text:"Балалар аулаға кішкентай ағаш әкелді. Олар жер қазды. Ағашты бірге отырғызды. Балалар оған су құйып, күтім жасады.",moral:"Еңбекқорлық"},
+        {title:"Кітапты күту",icon:"📚",character:"Жан",ending:"Кітап келесі балаға жарады.",lesson:"Кітап келесі балаға жарады.",steps:["Жан кітапханадан кітап алды.","Ол кітапты мұқият оқыды.","Беттерін бүктемей жапты.","Кітапты орнына қайтарды."],text:"Жан кітапханадан ертегі алды. Ол кітапты таза қолымен ұстады. Беттерін жыртпай оқыды. Соңында кітапты орнына қойды.",moral:"Еңбекқорлық"},
+        {title:"Үлкенге орын",icon:"🚌",character:"Нұрай",ending:"Әжей алғыс айтты.",lesson:"Әжей алғыс айтты.",steps:["Нұрай автобусқа мінді.","Автобусқа әжей кірді.","Нұрай орнын ұсынды.","Әжей алғыс айтты."],text:"Нұрай автобусқа мінді. Бір аялдамадан соң әжей кірді. Нұрай орнын ұсынды. Әжей күлімдеп, рақмет айтты.",moral:"Үлкенді құрметтеу"},
+        {title:"Қарлы күн",icon:"❄️",character:"Тимур",ending:"Құстар жем жеді.",lesson:"Құстар жем жеді.",steps:["Қар қалың жауды.","Тимур құстарды көрді.","Ол жем салғышқа дән салды.","Құстар келіп жем жеді."],text:"Қар қалың жауды. Тимур ауладағы құстарды көрді. Ол жем салғышқа дән салды. Құстар келіп, жем жеді.",moral:"Қамқорлық"},
+        {title:"Ортақ сурет",icon:"🎨",character:"Балалар",ending:"Сурет бәріне ұнады.",lesson:"Сурет бәріне ұнады.",steps:["Балалар үлкен сурет салды.","Әр бала бір түс таңдады.","Олар кезекпен сурет қосты.","Сурет бәріне ұнады."],text:"Балалар бірге үлкен сурет салды. Әркім өз түсін таңдады. Бір-біріне орын берді. Дайын сурет бәріне ұнады.",moral:"Достық"},
+        {title:"Жоғалған қолғап",icon:"🧤",character:"Рауан",ending:"Қолғап иесіне қайтты.",lesson:"Қолғап иесіне қайтты.",steps:["Рауан жолдан қолғап тапты.","Ол қолғапты мұғалімге апарды.","Мұғалім иесін сұрады.","Қолғап иесіне қайтты."],text:"Рауан мектепке келе жатты. Жолдан қолғап тауып алды. Ол қолғапты мұғалімге апарды. Қолғап иесіне қайтты.",moral:"Адалдық"},
+        {title:"Еңбек күні",icon:"🪴",character:"Әлима",ending:"Бөлме гүлге толды.",lesson:"Бөлме гүлге толды.",steps:["Әлима бөлмесін жинады.","Кітаптарын сөреге қойды.","Гүлдерге су құйды.","Бөлмесі таза әрі әдемі болды."],text:"Әлима сенбі күні ерте тұрды. Ол бөлмесін жинады. Гүлдеріне су құйды. Бөлмесі таза әрі әдемі болды.",moral:"Еңбекқорлық"}
+      ];
+      const valueRows = [
+        ["Адалдық","🤝","Асан дүкеннен артық ақша алды. Ол ақшаны сатушыға қайтарды. Сатушы рақмет айтты. Асан өзін жақсы сезінді.","Асан ақшаны неге қайтарды?","Өйткені ол адал болғысы келді.","Өзіне тәтті алғысы келді.","Адал бала шындықты айтып, өзгенің затын қайтарып береді."],
+        ["Достық","🫶","Жаңа бала үзілісте жалғыз тұрды. Әсем оны көрді. Ол баланы ойынға шақырды. Екеуі тез дос болды.","Әсем қандай іс жасады?","Жаңа баланы ойынға қосты.","Одан алыстап кетті.","Дос болу үшін жылы сөз айтып, ортаға шақыру керек."],
+        ["Еңбекқорлық","🌱","Әли сынып гүлін суарды. Ол топырақты да қопсытты. Гүлдің жапырағы жайқалды. Әли еңбегіне қуанды.","Гүл неге жайқалды?","Әли оған күтім жасады.","Гүлді ешкім көрмеді.","Еңбек пен күтім жақсы нәтиже береді."],
+        ["Қамқорлық","💚","Меруерт аулада тоңған күшікті көрді. Ол күшікті жалғыз алмады. Ересек адамды шақырды. Олар күшікті қауіпсіз жерге апарды.","Меруерт кімге хабар берді?","Ересек адамға.","Бейтаныс балаға.","Қамқорлық жасағанда қауіпсіз көмекті ересекпен бірге ұйымдастыр."],
+        ["Отансүйгіштік","🇰🇿","Балалар аулаға шықты. Жерде қағаз жатты. Олар қағазды жәшікке салды. Аула тап-таза болды.","Балалар туған жеріне қалай қамқор болды?","Қоқысты жинады.","Гүлдерді жұлды.","Отанды сүю туған жерді таза ұстаудан басталады."],
+        ["Үлкенді құрметтеу","🧓","Автобусқа әже мінді. Бос орын болмады. Дана орнын ұсынды. Әже оған рақмет айтты.","Дана неге орын берді?","Әжені сыйлап, қамқор болу үшін.","Автобустан түсіп қалу үшін.","Үлкенді құрметтеу сыпайы әрекеттен көрінеді."],
+        ["Адалдық","🤝","Ержан сурет салды. Ол суды байқамай төгіп алды. Мұғалім сұрады. Ержан болған істі жасырмады.","Ержан не істеді?","Шындықты айтты.","Басқа баланы кінәлады.","Қателік болса да, шындықты айту сенімге бастайды."],
+        ["Достық","🫶","Айша есеп шығара алмады. Досы қасына отырды. Ол есепті бірден шығарып бермеді. Екеуі бірге ойланып шешті.","Досы Айшаға қалай көмектесті?","Бірге ойланып үйренді.","Дәптерін алып қойды.","Нағыз дос үйретіп, қолдайды."],
+        ["Еңбекқорлық","🧹","Сыныпта қағаздар шашылып жатты. Кезекші балалар сыпырғыш алды. Олар еденді тазалады. Мұғалім балаларға алғыс айтты.","Балалар неге мақтау естіді?","Сыныпты бірге жинағаны үшін.","Сабақтан ерте кеткені үшін.","Ортақ іске әркім үлес қосса, жұмыс жеңілдейді."],
+        ["Қамқорлық","🐦","Қыста құстарға жем аз болды. Нұр атасымен жемсалғыш жасады. Олар дән салды. Құстар жем жеді.","Нұр құстарға қалай көмектесті?","Жем салғышқа дән салды.","Құстарды ұясынан алды.","Жануарларға зиян келтірмей, қауіпсіз қамқорлық жасау керек."],
+        ["Отансүйгіштік","🌷","Сынып туған өлке туралы сурет салды. Марат өз ауылының өзенін салды. Ол суретіне ағаштар қосты. Балалар туған жерін мақтан етті.","Марат суретінде нені көрсетті?","Туған ауылының табиғатын.","Басқа елдің қаласын.","Өз өлкеңді танып, аялау – отансүйгіштік."],
+        ["Үлкенді құрметтеу","👵","Әли әжесінің әңгімесін тыңдады. Ол сөзін бөлмеді. Әжесі бала күнін айтып берді. Әли жаңа оқиға білді.","Әли әжесіне қалай құрмет көрсетті?","Мұқият тыңдады.","Әңгіме кезінде айқайлады.","Үлкеннің сөзін тыңдау – ізеттіліктің белгісі."],
+        ["Адалдық","🔎","Сая саябақтан кілт тауып алды. Ол кілтті қалтасына салмады. Жақын тұрған қызметкерге берді. Иесі кілтін тауып алды.","Сая кілтті неге қызметкерге берді?","Иесін табу үшін.","Ойыншыққа айырбастау үшін.","Табылған затты иесіне қайтаруға көмектес."],
+        ["Достық","🎈","Досының добы жарылып қалды. Бекзат өз добын бөлісті. Балалар бірге ойнады. Досы көңілденіп қалды.","Бекзаттың ісі нені көрсетті?","Бөлісе білетінін.","Ойыншықты жасыратынын.","Досқа қуаныш сыйлау үшін бөлісуге болады."],
+        ["Еңбекқорлық","📚","Нұрай күнде аздап кітап оқыды. Алғашында баяу оқыды. Ол күн сайын жаттықты. Кейін мәтінді жақсы оқыды.","Нұрай қалай жақсы оқуды үйренді?","Күнде жаттығу арқылы.","Кітабын жауып қою арқылы.","Тұрақты еңбек дағдыны жақсартады."],
+        ["Қамқорлық","🩹","Досы құлап, тізесін ауыртып алды. Мақсат оның қасында қалды. Ол мұғалімді шақырды. Мұғалім досына көмектесті.","Мақсаттың ең дұрыс әрекеті қандай болды?","Мұғалімді шақырды.","Досын жалғыз қалдырды.","Қиын жағдайда сенімді ересекке хабарлау керек."],
+        ["Отансүйгіштік","🌳","Балалар мектеп ауласына көшет отырғызды. Әр топ бір ағаш алды. Олар кезекпен су құйды. Аула жасылдана түсті.","Балалар не үшін кезекпен су құйды?","Көшеттер жақсы өссін деп.","Суды төгіп тастау үшін.","Ортақ жерді күтуге бәрі жауапты."],
+        ["Үлкенді құрметтеу","🧓","Қарт кісі дүкенге барар жолды сұрады. Аружан сыпайы жауап берді. Ол жолды анық түсіндірді. Кісі алғыс айтты.","Аружан қалай сөйледі?","Сыпайы әрі анық.","Асығып, дөрекі.","Сыпайылық үлкенге де, кішіге де керек."],
+        ["Адалдық","📏","Ойын соңында екі топ ұпай санады. Данияр өз тобының ұпайын артық санағанын байқады. Ол қатесін айтты. Екі топ ойынды әділ аяқтады.","Данияр неге қатесін айтты?","Ойын әділ болсын деп.","Жеңіске жету үшін.","Адалдық жеңістен маңызды.","Адалдық әділдік пен сенімге жол ашады."],
+        ["Достық","🧩","Топтық жұмысқа балалар жиналды. Бір бала тапсырманы түсінбей қалды. Топ оған түсіндірді. Бәрі бірге жұмысты аяқтады.","Топ тапсырманы қалай бітірді?","Бір-біріне көмектесіп.","Бір баланы қоспай.","Бірлік пен көмек ортақ істі аяқтауға көмектеседі."]
+      ];
+      valueRows[18] = ["Адалдық","📏","Ойын соңында екі топ ұпай санады. Данияр өз тобының бір ұпайын артық санағанын байқады. Ол қатесін айтты. Екі топ ойынды әділ аяқтады.","Данияр неге қатесін айтты?","Ойын әділ болсын деп.","Жеңіске жету үшін.","Адалдық әділдік пен сенімге жол ашады."];
+
+      const twisters1 = [
+        "Доп домалап, жолға қонды.","Ақ қоян ақ қарда отыр.","Тасқа тас тиді.","Бала балға алды.","Қапта қап бар.","Қара қарға қарға қонды.","Шеше кесе жуды.","Сары мысық сүт ішті.","Құрт-құмырсқа құмда жүр.","Бота бұлақтан су ішті."
+      ];
+      const riddles1 = [
+        ["Таңертең шығады, кешке батады. Ол не?",["Күн","Ай","Жұлдыз"],"Күн"],
+        ["Мияулайды, сүт ішеді. Ол не?",["Мысық","Ит","Қой"],"Мысық"],
+        ["Қыста жауады, аппақ болады. Ол не?",["Қар","Жаңбыр","Құм"],"Қар"],
+        ["Төрт аяғы бар, үстіне кітап қоямыз. Ол не?",["Үстел","Қалам","Доп"],"Үстел"],
+        ["Өзі ұзын, жазады. Ол не?",["Қарындаш","Кесе","Етік"],"Қарындаш"],
+        ["Аспанда түнде жылтырайды. Ол не?",["Жұлдыз","Гүл","Балық"],"Жұлдыз"],
+        ["Қанаты бар, ұшады, ән салады. Ол не?",["Құс","Мысық","Бақа"],"Құс"],
+        ["Іші толған су, өзі мөлдір. Ол не?",["Көл","Тас","Қар"],"Көл"],
+        ["Жаңбырдан соң аспанда түрлі түсті көпір. Ол не?",["Кемпірқосақ","Бұлт","Күн"],"Кемпірқосақ"],
+        ["Екі дөңгелегі бар, аяқпен тебеміз. Ол не?",["Велосипед","Кітап","Доп"],"Велосипед"]
+      ];
+      const twisters2 = [
+        "Шеше, шеше, неше кесе сынды кеше?","Қапта қап бар, қапта қап-қап мақта бар.","Қара қарға қар үстінде қарқылдайды.","Бір түйе су ішті, бір түйе бу ішті.","Ақ тай ақ па, қара тай ақ па?","Көк кептер көп көк шөпке қонды.","Жаңбыр жауды, Жанар жағада жүрді.","Сары шымшық шыршаға шықты.","Торта қойдым, орта қойдым.","Құдық қаздым, суын аз қылдым."
+      ];
+      const riddles2 = [
+        ["Қабат-қабат қаттама, ақылың болса аттама. Ол не?",["Кітап","Терезе","Доп"],"Кітап"],
+        ["Жазда киінеді, қыста шешінеді. Ол не?",["Ағаш","Үй","Балық"],"Ағаш"],
+        ["Өзі сөйлей білмейді, салған ізі сөйлейді. Ол не?",["Қалам","Қасық","Сағат"],"Қалам"],
+        ["Таңмен көзін ашады, әлемге нұрын шашады. Ол не?",["Күн","Ай","Бұлт"],"Күн"],
+        ["Қолы жоқ сурет салады, тісі жоқ тістеп алады. Ол не?",["Аяз","Жел","Жаңбыр"],"Аяз"],
+        ["Бір үйде көп бала, бір-біріне қараған. Ол не?",["Кітаптағы әріптер","Құстар","Ағаштар"],"Кітаптағы әріптер"],
+        ["Өзі домалақ, түсі сары, бақта өседі. Ол не?",["Алма","Сәбіз","Қарбыз"],"Алма"],
+        ["Аяғы жоқ жүреді, аузы жоқ сөйлейді. Ол не?",["Хат","Тас","Гүл"],"Хат"],
+        ["Қыста ғана болады, ұстасаң қолың тоңады. Ол не?",["Мұз","Құм","Жапырақ"],"Мұз"],
+        ["Басы бар, шашы жоқ, көзі бар, қасы жоқ. Ол не?",["Сарымсақ","Қоян","Шелек"],"Сарымсақ"]
+      ];
+
+      const calligraphy1 = ["А","Ә","Б","В","Г","Д","Е","Ғ","Қ","Ң","Ө","Ұ","Ү","І","ба-ла","а-на","Апа","Әке","Отансүйгіштік","Дос"];
+      const calligraphy2 = ["А","Ә","Б","В","Г","Д","Е","Ғ","Қ","Ң","Ө","Ұ","Ү","І","ба-ла","ә-ке","Оқу – білім бұлағы.","Еңбек түбі – береке.","Досы көпті жау алмайды.","Өнер алды – қызыл тіл."];
+      const calligraphyTips = ["Әріпті үлгіге қарап асықпай жаз.","Қаламды жеңіл ұстап, жолдан шықпа.","Әр сызықты анық әрі ұқыпты жүргіз.","Әріптердің арасына орын қалдыр.","Жазуыңды аяқтағанда өзіңе риза бол!"];
+      const modules = {
+        vocabulary: {title:"Сөз сандығы",icon:"🧩",description:"Буын құра, суретті таны, сөздердің мағынасын тап.",tasks:20},
+        story: {title:"Ойдан – мәтінге",icon:"📚",description:"Оқиғаны реттеп, шағын мәтінді түсініп оқы.",tasks:20},
+        calligraphy: {title:"Көркем жазу шебері",icon:"✍️",description:"Әріптерді, буындарды және жақсы сөздерді жаз.",tasks:20},
+        values: {title:"Құндылықтар әлемі & Мәтін талдау",icon:"💚",description:"Қысқа мәтінді оқып, жақсы шешімді таңда.",tasks:20},
+        tongue: {title:"Тіл ұстартқыш & Жұмбақ",icon:"🗣️",description:"Жаңылтпаш айт та, жұмбақ шеш.",tasks:20}
+      };
+
+      const storiesFor = grade => stories.map((story, i) => ({...story, question: grade === 1 ? "Басты кейіпкер кім?" : "Оқиғаның соңында не болды?", answer: grade === 1 ? story.character : story.ending, choices: grade === 1 ? [story.character, stories[(i+3)%stories.length].character, stories[(i+7)%stories.length].character] : [story.ending, stories[(i+4)%stories.length].ending, stories[(i+9)%stories.length].ending]}));
+      const buildValues = grade => valueRows.map((row,i) => ({category:row[0],icon:row[1],text:grade===1?row[2]:`${row[2]} ${row[6]}`,question:grade===1?"Қандай іс дұрыс?":row[3],good:row[4],bad:row[5],tip:row[6],index:i}));
+      const buildTongue = grade => {
+        const twisters = grade === 1 ? twisters1 : twisters2, riddles = grade === 1 ? riddles1 : riddles2;
+        return [...twisters.map((text,i)=>({kind:"twister",text,tip:grade===1?"Әуелі жай айт. Сосын анық қайтала.":"Буындарды анық айтып, біртіндеп жылдамдат.",index:i})),...riddles.map((riddle,i)=>({kind:"riddle",text:riddle[0],options:riddle[1],answer:riddle[2],tip:"Жұмбақтың әр сөзін мұқият тыңда.",index:i+10}))];
+      };
+
+      const freshState = () => ({grade:1,marjans:0,totalEarnedMarjans:0,stars:0,badges:[],completed:[],drawings:{},storyOrders:{},storiesWritten:[],completionTimes:[],activity:[],stickers:[],parentRewards:[],claimedRewards:[],baygazyHistory:[],encouragements:[],notifications:[],parentMessage:"",studentName:"",updatedAt:null});
+      const loadState = () => {
+        try {
+          const saved = localStorage.getItem(KEY) || localStorage.getItem("soz-marzhan-state");
+          const parsedValue = saved ? JSON.parse(saved) : {};
+          const parsed = parsedValue&&typeof parsedValue==="object"?parsedValue:{};
+          const state = {...freshState(),...parsed};
+          state.marjans = Math.max(0,Number(parsed.marjans??parsed.coins)||0);
+          state.totalEarnedMarjans = Math.max(state.marjans,Number(parsed.totalEarnedMarjans??parsed.totalEarnedCoins)||0);
+          delete state.coins;
+          delete state.totalEarnedCoins;
+          if (![1,2].includes(Number(state.grade))) state.grade = 1;
+          state.grade = Number(state.grade);
+          for (const key of ["badges","completed","storiesWritten","completionTimes","activity","stickers","parentRewards","claimedRewards","baygazyHistory","encouragements","notifications"]) if (!Array.isArray(state[key])) state[key] = [];
+          for (const key of ["drawings","storyOrders"]) if (!state[key] || typeof state[key] !== "object") state[key] = {};
+          state.stars = Math.max(0,Number(state.stars)||0);
+          if (typeof state.studentName !== "string") state.studentName = "";
+          return state;
+        } catch (error) {
+          console.error("Сақталған оқу дерегін оқу мүмкін болмады.",error);
+          return freshState();
+        }
+      };
+      let state = loadState(), activeView = "home", taskIndex = Object.fromEntries(Object.keys(modules).map(key=>[key,0]));
+      let pairSelected = null, audioContext = null, toastTimer = 0, taskStartedAt = Date.now(), canvasDrawing = false, ink = "#2a9d8f", brush = 5, hasStroke = false;
+      const esc = value => String(value).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+      const moduleTasks = {
+        vocabulary: grade => grade === 1 ? vocab1 : vocab2,
+        story: storiesFor,
+        calligraphy: grade => grade === 1 ? calligraphy1 : calligraphy2,
+        values: buildValues,
+        tongue: buildTongue
+      };
+      const taskKey = (module,index=taskIndex[module],grade=state.grade) => `${grade}:${module}:${index}`;
+      const isDone = (module,index=taskIndex[module]) => state.completed.includes(taskKey(module,index));
+      const completedCount = module => Array.from({length:20},(_,i)=>isDone(module,i)).filter(Boolean).length;
+      const toast = message => {
+        const node=$("#toast"); node.textContent=message; node.classList.add("show");
+        window.clearTimeout(toastTimer); toastTimer=window.setTimeout(()=>node.classList.remove("show"),2700);
+      };
+      const showPearlReward = amount => {
+        const pill=$("#pearlPill"), popup=document.createElement("span");
+        popup.className="pearl-pop"; popup.textContent=`+${amount} маржан`;
+        pill.append(popup); pill.classList.remove("bump"); void pill.offsetWidth; pill.classList.add("bump");
+        window.setTimeout(()=>popup.remove(),1250);
+      };
+      const saveState = () => {
+        state.updatedAt = new Date().toISOString();
+        try { localStorage.setItem(KEY,JSON.stringify(state)); }
+        catch (error) { console.error("Прогресті құрылғыға сақтау мүмкін болмады.",error); toast("Сақтау мүмкін болмады. Құрылғы жадында орын барын тексер."); }
+        updateHeader();
+      };
+      const playTone = (notes=[660,880]) => {
+        if (!window.AudioContext && !window.webkitAudioContext) return;
+        try {
+          audioContext ||= new (window.AudioContext||window.webkitAudioContext)();
+          if (audioContext.state==="suspended") audioContext.resume();
+          notes.forEach((note,i)=>{
+            const start=audioContext.currentTime+i*.12, oscillator=audioContext.createOscillator(), gain=audioContext.createGain();
+            oscillator.type="sine"; oscillator.frequency.value=note;
+            gain.gain.setValueAtTime(.0001,start); gain.gain.exponentialRampToValueAtTime(.1,start+.025); gain.gain.exponentialRampToValueAtTime(.0001,start+.18);
+            oscillator.connect(gain); gain.connect(audioContext.destination); oscillator.start(start); oscillator.stop(start+.2);
+          });
+        } catch (error) { console.warn("Дыбыс ойнатылмады.",error); }
+      };
+      const confetti = () => {
+        const canvas=$("#confetti"),ctx=canvas.getContext("2d"),ratio=window.devicePixelRatio||1;
+        canvas.width=innerWidth*ratio; canvas.height=innerHeight*ratio; canvas.style.width=`${innerWidth}px`; canvas.style.height=`${innerHeight}px`; ctx.setTransform(ratio,0,0,ratio,0,0);
+        const colors=["#f4a261","#2a9d8f","#e7765e","#a8dadc","#264653"];
+        const bits=Array.from({length:110},()=>({x:Math.random()*innerWidth,y:-20-Math.random()*130,size:4+Math.random()*7,speed:2+Math.random()*4,angle:Math.random()*6,color:colors[Math.floor(Math.random()*colors.length)]}));
+        let frame=0;
+        const draw=()=>{ctx.clearRect(0,0,innerWidth,innerHeight);bits.forEach(bit=>{bit.y+=bit.speed;bit.x+=Math.sin(bit.y/25);bit.angle+=.08;ctx.save();ctx.translate(bit.x,bit.y);ctx.rotate(bit.angle);ctx.fillStyle=bit.color;ctx.fillRect(-bit.size/2,-bit.size/2,bit.size,bit.size*.7);ctx.restore();});if(++frame<100)requestAnimationFrame(draw);else ctx.clearRect(0,0,innerWidth,innerHeight);};
+        draw();
+      };
+      const updateHeader = () => {
+        $("#pearlCount").textContent=state.marjans; $("#starCount").textContent=state.stars;
+        $$("[data-grade]").forEach(button=>button.classList.toggle("active",Number(button.dataset.grade)===state.grade));
+      };
+      const updateMascot = () => {
+        const messages={home:"Сәлем! Бүгін жаңа сөз үйренуге дайынсың ба?",vocabulary:"Сөзді дауыстап оқы. Дұрыс жауабын ою-өрнектей тап!",story:"Әуелі оқы, содан соң оқиғаны ретімен құрастыр.",calligraphy:"Қаламыңды жай жүргіз. Әр әріпті мақтанышпен жаз!",values:"Мәтінді асықпай оқы. Жақсы таңдау жасай аласың!",tongue:"Жаңылтпашты әуелі баяу, кейін анық айт!",rewards:"Әр маржаның еңбегіңмен жиналады!",parent:"Балаңыздың шағын жеңістерін бірге атап өтіңіз!"};
+        const module=modules[activeView]; $("#helperBubble").innerHTML=`<strong>Зерек · ${esc(module?.title||"Қош келдің!")}</strong>${esc(messages[activeView]||messages.home)}`;
+      };
+      const renderHome = () => {
+        $("#app").innerHTML=`<section class="view active">
+          <div class="hero"><div class="hero-copy"><div class="eyebrow">Қазақ тілі · 1–2-сынып · оқу модульдері</div><h1>Сөз маржаны –<br>ой қазынасы</h1><p>Әріп таны, сөз құра, шағын мәтін оқы. Әр дұрыс қадамға білім маржанын жина!</p><button class="button gold" data-go="vocabulary">Оқуды бастау →</button></div><div class="hero-art" aria-label="Кітап пен жұлдыз"><span class="hero-star">✨</span><span class="hero-book" aria-hidden="true">📖</span></div></div>
+          <div class="home-strip"><h2>Оқу модульдері</h2><span class="badge">${state.grade}-сынып · әр модульде 20 деңгей</span></div>
+          <div class="module-grid">${Object.entries(modules).map(([key,module])=>`<button class="module-card" data-go="${key}"><span class="module-icon">${module.icon}</span><strong>${esc(module.title)}</strong><small>${esc(module.description)} · ${completedCount(key)}/20 орындалды</small><span class="module-arrow">→</span></button>`).join("")}
+            <button class="module-card" data-go="rewards"><span class="module-icon">🦪</span><strong>Ой сандығы</strong><small>Білім маржанын жинап, жапсырма мен белгілерді аш.</small><span class="module-arrow">→</span></button>
+            <button class="module-card" data-go="parent"><span class="module-icon">🏠</span><strong>Байғазы порталы</strong><small>Ата-ана мен мұғалім баланың оқуын қолдайды.</small><span class="module-arrow">→</span></button>
+          </div></section>`;
+        if(state.notifications.length){
+          const notices=document.createElement("div");
+          notices.className="notice-list";
+          notices.setAttribute("aria-live","polite");
+          notices.innerHTML=state.notifications.slice(0,3).map(item=>`<div class="notice ornament-border"><span aria-hidden="true">🎉</span><span><strong>${esc(item.badge)}</strong><br>${esc(item.message)}</span><button class="button soft small" data-dismiss-notice="${item.id}" aria-label="Хабарламаны жабу">×</button></div>`).join("");
+          $("#app .hero").insertAdjacentElement("afterend",notices);
+          $$("[data-dismiss-notice]").forEach(button=>button.addEventListener("click",()=>{
+            state.notifications=state.notifications.filter(item=>item.id!==Number(button.dataset.dismissNotice));
+            saveState(); renderHome();
+          }));
+        }
+        wireGoButtons();
+      };
+      const taskControls = (module,index) => `<div class="task-controls"><div><strong>${esc(modules[module].title)} · ${index+1}/20 деңгей</strong><br><small>${isDone(module,index)?"✅ Орындалды":`${completedCount(module)}/20 деңгей орындалды · дұрыс жауапқа +10 маржан`}</small></div><div class="task-nav"><div class="task-dots" aria-label="Деңгейді таңдау">${Array.from({length:20},(_,i)=>`<button class="task-dot ${i===index?"active":""} ${isDone(module,i)?"done":""}" data-task="${i}" title="${i+1}-деңгей" aria-label="${i+1}-деңгейге өту"></button>`).join("")}</div><button class="task-step" data-step="-1" aria-label="Алдыңғы деңгей">←</button><button class="task-step" data-step="1" aria-label="Келесі деңгей">→</button></div></div>`;
+      const shell = (module,index,body) => {
+        const title=modules[module].title;
+        $("#app").innerHTML=`<section class="view active"><div class="page-heading"><div><div class="eyebrow">${state.grade}-сынып · ${index+1}/20 деңгей</div><h1>${esc(title)}</h1><p>${esc(modules[module].description)}</p></div><span class="badge">🦪 +10 маржан</span></div>${taskControls(module,index)}${body}</section>`;
+        $$(".task-dot").forEach(button=>button.addEventListener("click",()=>setTask(module,Number(button.dataset.task))));
+        $$("[data-step]").forEach(button=>button.addEventListener("click",()=>setTask(module,index+Number(button.dataset.step))));
+      };
+      const awardTask = (module,index,label) => {
+        const key=taskKey(module,index);
+        if(state.completed.includes(key)) return false;
+        state.completed.push(key); state.marjans+=10; state.totalEarnedMarjans+=10; state.stars+=1;
+        state.completionTimes.push(Math.max(1,Math.round((Date.now()-taskStartedAt)/1000)));
+        state.activity.unshift({title:label,detail:`${state.grade}-сынып · ${new Date().toLocaleDateString("kk-KZ")}`,score:"+10 🦪"});
+        state.activity=state.activity.slice(0,20);
+        const moduleDone=completedCount(module)===20, badge=`${modules[module].title} шебері`;
+        if(moduleDone&&!state.badges.includes(`${state.grade}:${badge}`)){state.badges.push(`${state.grade}:${badge}`);confetti();playTone([660,830,1040]);toast(`Тамаша! «${badge}» белгісін алдың!`);}
+        else {playTone([660,880]);toast("Жарайсың! Ой сандығыңа +10 маржан түсті!");}
+        saveState(); showPearlReward(10); return true;
+      };
+      const finishQuestion = (module,index,answer,correct,feedback,correctMessage) => {
+        if(isDone(module,index)) return;
+        if(answer===correct){feedback.textContent=correctMessage;awardTask(module,index,modules[module].title);}
+        else {feedback.textContent="Тағы бір рет ойланып көр. Жауабын мұқият оқы.";playTone([230]);}
+      };
+      const setTask = (module,index) => {
+        taskIndex[module]=(index+20)%20; taskStartedAt=Date.now(); renderModule(module); updateMascot();
+      };
+      const renderChoiceTask = (module,index,prompt,cue,choices,answer,explanation,extra="") => {
+        const done=isDone(module,index);
+        shell(module,index,`<div class="task-card"><div class="panel task-main"><div class="eyebrow">${extra||"Оқып, жауабын таңда"}</div><div class="task-cue" aria-hidden="true">${cue}</div><div class="task-prompt">${esc(prompt)}</div><div class="choices">${choices.map(choice=>`<button class="choice ${done&&choice===answer?"correct":""}" data-answer="${esc(choice)}" ${done?"disabled":""}>${esc(choice)}</button>`).join("")}</div><p class="feedback" aria-live="polite">${done?esc(explanation):""}</p></div><aside class="reward-panel"><div><div class="eyebrow">Маржан қоржыны</div><h2>Кішкентай қадам — үлкен білім!</h2><div class="big">🦪 +10</div><div class="progress-track"><span style="width:${completedCount(module)*5}%"></span></div><p class="muted">${completedCount(module)}/20 деңгей дайын</p></div><span>${modules[module].icon} Тырысып көр!</span></aside></div>`);
+        $$(".choice").forEach(button=>button.addEventListener("click",()=>{
+          const selected=button.dataset.answer;
+          if(selected===answer){button.classList.add("correct");$(".feedback").textContent=explanation;awardTask(module,index,modules[module].title);}
+          else{button.classList.add("incorrect");$(".feedback").textContent="Жауапты тағы бір рет ойланып таңда.";playTone([230]);window.setTimeout(()=>button.classList.remove("incorrect"),450);}
+        }));
+      };
+      const renderVocabulary = index => {
+        const task=moduleTasks.vocabulary(state.grade)[index];
+        renderChoiceTask("vocabulary",index,task[1],task[0],task[2],task[3],`Дұрыс! ${task[3]} — жауабы.`,index<6?"Буындар мен дыбыстар":"Сөз мағынасы мен сурет");
+      };
+      const renderStory = index => {
+        const story=storiesFor(state.grade)[index], key=taskKey("story",index), done=isDone("story",index);
+        let order=state.storyOrders[key];
+        if(!Array.isArray(order)||order.length!==4){order=[0,1,2,3].sort(()=>Math.random()-.5);state.storyOrders[key]=order;saveState();}
+        const isOrdered=order.every((n,i)=>n===i);
+        const choices=story.choices.filter((choice,i,array)=>array.indexOf(choice)===i);
+        const sequenceCue = text => {
+          const cues=[[/көшет|ағаш|гүл|жапырақ/i,"🌱"],[/доп|ойна/i,"⚽"],[/құс|жем|дән/i,"🐦"],[/қонақ|сәлем|рақмет/i,"👋"],[/кітап|оқы|мәтін/i,"📖"],[/жол|шам|автобус/i,"🚦"],[/әже|әке|ата|үлкен/i,"👪"],[/су|сүт|іш/i,"💧"],[/қар|қыс|аяз/i,"❄️"],[/сурет|бояу|түсті/i,"🎨"],[/сынып|мектеп|сабақ/i,"🏫"],[/жина|таза|қағаз/i,"🧹"]];
+          return cues.find(([pattern])=>pattern.test(text))?.[1]||story.icon;
+        };
+        const answerDone=done;
+        shell("story",index,`<div class="panel task-main"><div class="eyebrow">Әуелі оқы. Содан соң суреттегі оқиғаны ретте.</div><div class="story-text">${esc(story.text)}</div><div class="story-steps">${order.map((step,pos)=>`<div class="story-step"><span class="step-number">${pos+1}</span><span class="sequence-cue" aria-hidden="true">${sequenceCue(story.steps[step])}</span><span class="step-text">${esc(story.steps[step])}</span><span class="move-buttons"><button data-move="${pos}" data-dir="-1" aria-label="Жоғары жылжыту" ${pos===0?"disabled":""}>↑</button><button data-move="${pos}" data-dir="1" aria-label="Төмен жылжыту" ${pos===3?"disabled":""}>↓</button></span></div>`).join("")}</div><p class="feedback" id="orderFeedback" aria-live="polite">${isOrdered?"Жарайсың! Оқиға реттелді. Енді сұраққа жауап бер.":"Карталарды дұрыс ретке келтіріп көр."}</p>${isOrdered?`<h2>${esc(story.question)}</h2><div class="choices">${choices.map(choice=>`<button class="choice ${answerDone&&choice===story.answer?"correct":""}" data-story-answer="${esc(choice)}" ${answerDone?"disabled":""}>${esc(choice)}</button>`).join("")}</div><p class="feedback" id="storyFeedback" aria-live="polite">${answerDone?"Дұрыс! Мәтінді жақсы түсіндің.":""}</p>`:""}</div>`);
+        $$("[data-move]").forEach(button=>button.addEventListener("click",()=>{
+          const from=Number(button.dataset.move),to=from+Number(button.dataset.dir),next=[...order];[next[from],next[to]]=[next[to],next[from]];state.storyOrders[key]=next;saveState();renderStory(index);
+        }));
+        $$("[data-story-answer]").forEach(button=>button.addEventListener("click",()=>{
+          if(isDone("story",index))return;
+          const feedback=$("#storyFeedback");
+          if(button.dataset.storyAnswer===story.answer){button.classList.add("correct");feedback.textContent="Дұрыс! Мәтінді жақсы түсіндің.";awardTask("story",index,"Оқиға оқырманы");}
+          else{button.classList.add("incorrect");feedback.textContent="Мәтінге қайта қара. Дұрыс жауабын табасың!";playTone([230]);}
+        }));
+      };
+      const renderCalligraphy = index => {
+        const target=moduleTasks.calligraphy(state.grade)[index], done=isDone("calligraphy",index);
+        shell("calligraphy",index,`<div class="canvas-layout"><div class="panel"><div class="canvas-wrap"><canvas id="writingCanvas" aria-label="Әріп пен сөзді үлгі бойынша жазу тақтасы"></canvas></div><p class="feedback" id="writingFeedback" aria-live="polite">${done?"Бұл жазу тапсырмасы орындалды. Келесі үлгіні байқап көр!":"Үлгіні торкөзге қарап жазып көр."}</p></div><aside class="panel"><div class="eyebrow">ҮЛГІ БОЙЫНША ЖАЗ</div><div class="task-cue" style="font-size:52px">${esc(target)}</div><p class="muted">${esc(calligraphyTips[index%calligraphyTips.length])}</p><div class="tool-group"><label class="tool-label" for="brushSize">Қалам жуандығы <span id="brushValue">${brush}</span></label><input id="brushSize" type="range" min="2" max="14" value="${brush}"></div><div class="tool-group"><span class="tool-label">Сия түсі</span><div class="swatches"><button class="swatch ${ink==="#2a9d8f"?"active":""}" data-ink="#2a9d8f" style="background:#2a9d8f" aria-label="Жасыл сия"></button><button class="swatch ${ink==="#264653"?"active":""}" data-ink="#264653" style="background:#264653" aria-label="Көк сия"></button><button class="swatch ${ink==="#f4a261"?"active":""}" data-ink="#f4a261" style="background:#f4a261" aria-label="Алтын сия"></button><button class="swatch ${ink==="#d95757"?"active":""}" data-ink="#d95757" style="background:#d95757" aria-label="Қызыл сия"></button></div></div><div class="button-row"><button class="button outline small" id="clearCanvas">Тазалау</button><button class="button small" id="downloadCanvas">Жүктеу ↓</button></div></aside></div>`);
+        setupCanvas(index);
+      };
+      const setupCanvas = index => {
+        const canvas=$("#writingCanvas"),ctx=canvas.getContext("2d"),storageKey=taskKey("calligraphy",index),target=moduleTasks.calligraphy(state.grade)[index];
+        const paintPage = () => {
+          const rect=canvas.getBoundingClientRect(); if(!rect.width)return;
+          const ratio=window.devicePixelRatio||1;canvas.width=rect.width*ratio;canvas.height=rect.height*ratio;ctx.setTransform(ratio,0,0,ratio,0,0);
+          ctx.fillStyle="#fffefa";ctx.fillRect(0,0,rect.width,rect.height);
+          ctx.strokeStyle="#dce8df";ctx.lineWidth=1;
+          for(let y=42;y<rect.height;y+=42){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(rect.width,y);ctx.stroke();}
+          ctx.save();ctx.setLineDash([3,5]);ctx.strokeStyle="#e6b5a2";ctx.beginPath();ctx.moveTo(40,0);ctx.lineTo(40,rect.height);ctx.stroke();ctx.restore();
+          ctx.save();ctx.globalAlpha=.18;ctx.fillStyle="#2a9d8f";ctx.textAlign="center";ctx.textBaseline="middle";
+          ctx.font=target.length===1?"118px system-ui":"60px system-ui";ctx.fillText(target,rect.width/2+18,rect.height/2,rect.width-75);
+          if(target.length===1){ctx.globalAlpha=.75;ctx.setLineDash([2,5]);ctx.lineWidth=2;ctx.strokeStyle="#2a9d8f";ctx.strokeText(target,rect.width/2+18,rect.height/2);}
+          ctx.restore();
+          const data=state.drawings[storageKey];hasStroke=Boolean(data);
+          if(data){const image=new Image();image.onload=()=>ctx.drawImage(image,0,0,rect.width,rect.height);image.src=data;}
+        };
+        const point=event=>{const rect=canvas.getBoundingClientRect();return{x:event.clientX-rect.left,y:event.clientY-rect.top};};
+        canvas.addEventListener("pointerdown",event=>{canvasDrawing=true;canvas.setPointerCapture(event.pointerId);const pos=point(event);ctx.beginPath();ctx.moveTo(pos.x,pos.y);ctx.lineCap="round";ctx.lineJoin="round";ctx.lineWidth=brush;ctx.strokeStyle=ink;});
+        canvas.addEventListener("pointermove",event=>{if(!canvasDrawing)return;const pos=point(event);ctx.lineTo(pos.x,pos.y);ctx.stroke();hasStroke=true;});
+        const stop=()=>{if(!canvasDrawing)return;canvasDrawing=false;if(hasStroke){state.drawings[storageKey]=canvas.toDataURL("image/png");saveState();if(!isDone("calligraphy",index)){awardTask("calligraphy",index,"Көркем жазу шебері");$("#writingFeedback").textContent="Керемет жаздың! +10 маржан алдың.";}}};
+        canvas.addEventListener("pointerup",stop);canvas.addEventListener("pointercancel",stop);
+        $("#brushSize").addEventListener("input",event=>{brush=Number(event.target.value);$("#brushValue").textContent=brush;});
+        $$(".swatch").forEach(button=>button.addEventListener("click",()=>{ink=button.dataset.ink;$$(".swatch").forEach(node=>node.classList.toggle("active",node===button));}));
+        $("#clearCanvas").addEventListener("click",()=>{delete state.drawings[storageKey];hasStroke=false;saveState();paintPage();toast("Жазу тақтасы тазаланды.");});
+        $("#downloadCanvas").addEventListener("click",()=>{const link=document.createElement("a");link.download=`soez-marzhan-${state.grade}-${index+1}.png`;link.href=canvas.toDataURL("image/png");link.click();});
+        paintPage();
+      };
+      const renderValues = index => {
+        const value=buildValues(state.grade)[index],done=isDone("values",index);
+        shell("values",index,`<div class="values-grid"><div class="value-list">${buildValues(state.grade).map((item,i)=>`<button class="value-tab ${i===index?"active":""}" data-value="${i}">${item.icon} ${esc(item.category)} · ${i+1}</button>`).join("")}</div><div class="panel task-main"><div class="eyebrow">${value.icon} ${esc(value.category)} · мәтінді оқы</div><div class="value-text">${esc(value.text)}</div><div class="task-prompt">${esc(value.question)}</div><div class="choices"><button class="choice ${done?"correct":""}" data-value-answer="good" ${done?"disabled":""}>${esc(value.good)}</button><button class="choice" data-value-answer="bad" ${done?"disabled":""}>${esc(value.bad)}</button></div><p class="feedback" id="valueFeedback" aria-live="polite">${done?esc(value.tip):""}</p></div></div>`);
+        $$(".value-tab").forEach(button=>button.addEventListener("click",()=>setTask("values",Number(button.dataset.value))));
+        $$("[data-value-answer]").forEach(button=>button.addEventListener("click",()=>{
+          if(isDone("values",index))return;
+          if(button.dataset.valueAnswer==="good"){button.classList.add("correct");$("#valueFeedback").textContent=value.tip;awardTask("values",index,`${value.category} туралы мәтін`);}
+          else{button.classList.add("incorrect");$("#valueFeedback").textContent="Мәтінді тағы оқып көр. Қай әрекет мейірімді әрі қауіпсіз?";playTone([230]);}
+        }));
+      };
+      const renderTongue = index => {
+        const task=buildTongue(state.grade)[index],done=isDone("tongue",index);
+        if(task.kind==="twister"){
+          shell("tongue",index,`<div class="task-card"><div class="panel task-main"><div class="eyebrow">ЖАҢЫЛТПАШ · ${index+1}/10</div><div class="task-cue">👄</div><div class="story-text" style="font-size:25px;font-weight:900;text-align:center">${esc(task.text)}</div><p class="muted">${esc(task.tip)}</p><button class="button gold" id="twisterDone" ${done?"disabled":""}>${done?"Орындалды ✓":"Оқып болдым! ✓"}</button><p class="feedback">${done?"Жарайсың! Тіліңді жаттықтырдың.":"Дайын болған соң батырманы бас."}</p></div><aside class="reward-panel"><div><div class="eyebrow">Сөзді анық айт</div><h2>Баяу оқы, кейін жылдамдат!</h2><div class="big">🦪 +10</div></div>${state.grade}-сыныпқа лайықталған</aside></div>`);
+          $("#twisterDone").addEventListener("click",()=>{if(awardTask("tongue",index,"Жаңылтпаш айтушы"))renderTongue(index);});
+        } else {
+          renderChoiceTask("tongue",index,task.text,"🤔",task.options,task.answer,`Дұрыс! Жауабы: ${task.answer}. ${task.tip}`,"ЖҰМБАҚ · ойланып жауап бер");
+        }
+      };
+      const moduleData = module => moduleTasks[module](state.grade);
+      const renderModule = module => {
+        if(module==="vocabulary")renderVocabulary(taskIndex[module]);
+        if(module==="story")renderStory(taskIndex[module]);
+        if(module==="calligraphy")renderCalligraphy(taskIndex[module]);
+        if(module==="values")renderValues(taskIndex[module]);
+        if(module==="tongue")renderTongue(taskIndex[module]);
+        updateHeader(); updateMascot();
+      };
+      const renderRewards = () => {
+        const stickerShop=[{id:"star",icon:"🌟",name:"Жарқыраған жұлдыз",price:30},{id:"flower",icon:"🌷",name:"Мейірім гүлі",price:50},{id:"book",icon:"📚",name:"Білім кітабы",price:70},{id:"crown",icon:"👑",name:"Тапқырлық тәжі",price:100}];
+        $("#app").innerHTML=`<section class="view active"><div class="page-heading"><div><div class="eyebrow">Маржандар жүйесі</div><h1>Ой сандығы мен марапаттар</h1><p>Тапсырманы дұрыс орындасаң, +10 білім маржаны аласың. Маржандарыңа жапсырма ашып, өз қазынаңды жина!</p></div><span class="badge">🦪 ${state.marjans} маржан · барлығы ${state.totalEarnedMarjans} таптың</span></div><div class="split"><div class="panel"><div class="eyebrow">ЖАПСЫРМА ДҮКЕНІ</div><h2>Маржаныңды таңда</h2><div class="reward-list">${stickerShop.map(item=>{const owned=state.stickers.includes(item.id);return `<div class="reward-row"><span class="achievement-icon">${item.icon}</span><div><strong>${item.name}</strong><small>${item.price} маржан</small></div><button class="button small ${owned?"soft":"gold"}" data-buy-sticker="${item.id}" ${owned||state.marjans<item.price?"disabled":""}>${owned?"Ашылды ✓":"Ашу"}</button></div>`;}).join("")}</div></div><div class="panel"><div class="eyebrow">МЕНІҢ ҚАЗЫНАМ</div><h2>Жиналған жапсырмалар</h2><div class="module-grid">${state.stickers.length?state.stickers.map(id=>{const item=stickerShop.find(sticker=>sticker.id===id);return item?`<div class="tile" style="padding:18px;text-align:center"><div style="font-size:38px">${item.icon}</div><strong>${item.name}</strong></div>`:"";}).join(""):'<p class="empty">Алғашқы жапсырмаңды ашу үшін маржан жина!</p>'}</div><h2 style="margin-top:22px">Ата-ананың байғазы марапаттары</h2><div class="reward-list">${state.parentRewards.length?state.parentRewards.map((reward,i)=>`<div class="reward-row"><div><strong>${esc(reward.name)}</strong><small>${reward.price} маржан${state.claimedRewards.includes(i)?" · Берілді":" · Ата-анаңмен келісіп ал"}</small></div>${state.claimedRewards.includes(i)?'<span class="badge">Рақмет!</span>':`<button class="button small" data-claim="${i}" ${state.marjans<reward.price?"disabled":""}>Маржанға алу</button>`}</div>`).join(""):'<p class="muted">Ата-ана марапат қосқанда осында көрінеді.</p>'}</div></div></div></section>`;
+        $$("[data-buy-sticker]").forEach(button=>button.addEventListener("click",()=>{const item=stickerShop.find(sticker=>sticker.id===button.dataset.buySticker);if(!item||state.marjans<item.price)return;state.marjans-=item.price;state.stickers.push(item.id);saveState();playTone([720,960]);renderRewards();toast(`${item.name} ашылды!`);}));
+        $$("[data-claim]").forEach(button=>button.addEventListener("click",()=>{const i=Number(button.dataset.claim),reward=state.parentRewards[i];if(!reward||state.marjans<reward.price)return;if(!confirm(`«${reward.name}» марапатын ${reward.price} маржанға белгілейсің бе?`))return;state.marjans-=reward.price;state.claimedRewards.push(i);state.baygazyHistory.unshift({title:"Байғазы марапаты",detail:reward.name,score:`${reward.price} маржан`});saveState();renderRewards();}));
+      };
+      const renderParent = () => {
+        const average=state.completionTimes.length?Math.round(state.completionTimes.reduce((sum,n)=>sum+n,0)/state.completionTimes.length):0;
+        const totalDone=state.completed.length;
+        $("#app").innerHTML=`<section class="view active"><div class="page-heading"><div><div class="eyebrow">Ата-ана мен мұғалімге арналған</div><h1>Байғазы порталы</h1><p>Балаңыздың оқуын қолдап, шынайы марапатты бірге белгілеңіз. Бұл бөлімдегі дерек осы құрылғыда сақталады.</p></div><span class="badge">👪 Отбасылық қолдау</span></div><div class="split"><div class="panel"><div class="eyebrow">БАЛАНЫҢ ПРОГРЕСІ</div><h2>Шағын жетістіктер</h2><div class="stat-grid"><div class="stat-box"><strong>🦪 ${state.marjans}</strong><small>қолда бар маржан</small></div><div class="stat-box"><strong>${state.totalEarnedMarjans}</strong><small>барлығы тапқан маржан</small></div><div class="stat-box"><strong>${totalDone}</strong><small>аяқталған деңгей</small></div></div><p class="muted">Орташа тапсырма уақыты: <strong>${average?`${Math.floor(average/60)} мин ${average%60} сек`:"Әзірше дерек жоқ"}</strong></p><div class="achievement-list">${Object.entries(modules).map(([key,module])=>{const count=completedCount(key),percent=count*5;return `<div><div style="display:flex;justify-content:space-between"><strong>${module.icon} ${esc(module.title)}</strong><small>${count}/20 · ${percent}%</small></div><div class="meter"><span style="width:${percent}%"></span></div></div>`;}).join("")}</div></div><div class="panel"><div class="eyebrow">ҮЙДЕГІ МАРАПАТ</div><h2>Өз марапатыңызды қосыңыз</h2><p class="muted">Мысалы: 200 маржан — сүйікті кітабың немесе отбасылық саяхат.</p><form id="rewardForm" class="form-row"><input class="form-input" name="name" maxlength="70" placeholder="Марапат атауы" required><input class="form-input" name="price" type="number" min="10" max="100000" step="10" placeholder="Маржан" required><button class="button" type="submit">Қосу +</button></form><div class="reward-list" style="margin-top:14px">${state.parentRewards.length?state.parentRewards.map((reward,i)=>`<div class="reward-row"><div><strong>${esc(reward.name)}</strong><small>${reward.price} маржан · ${state.claimedRewards.includes(i)?"орындалды":"орындалмаған"}</small></div></div>`).join(""):'<p class="empty">Әзірше марапат қосылмаған.</p>'}</div></div></div><div class="split" style="margin-top:15px"><div class="panel"><div class="eyebrow">БАЙҒАЗЫ МАРЖАНЫ</div><h2>Қолдау білдіріңіз</h2><form id="bonusForm" class="form-row"><input class="form-input" name="marjans" type="number" min="1" max="5000" step="1" placeholder="Маржан саны" required><input class="form-input" name="message" maxlength="100" placeholder="«Жарайсың, балам!»"><button class="button gold" type="submit">Бонус жіберу</button></form></div><div class="panel"><div class="eyebrow">СОҢҒЫ ӘРЕКЕТ</div><h2>Оқу белсенділігі</h2><div class="log-list">${state.activity.length?state.activity.slice(0,5).map(item=>`<div class="log-row"><div><strong>${esc(item.title)}</strong><small>${esc(item.detail)}</small></div><span class="badge">${esc(item.score)}</span></div>`).join(""):'<p class="empty">Әзірше белсенділік жоқ.</p>'}</div></div></div><div class="panel" style="margin-top:15px"><div class="eyebrow">МАРАПАТ ҚАҒАЗЫ</div><div class="certificate" id="printCertificate"><div class="award-icon">🏅</div><p class="eyebrow">ҚҰТТЫҚТАЙМЫЗ!</p><h2>Аптаның үздік әңгімешісі</h2><p>Қызыға оқып, әдемі әңгіме құрастырғаны үшін беріледі.</p><input class="name-input" id="studentName" value="${esc(state.studentName)}" placeholder="Оқушының аты-жөні" aria-label="Оқушының аты-жөні"><p><strong id="certificateName">${esc(state.studentName||"Жарайсың!")}</strong></p><button class="button gold" id="printButton">Басып шығару ⎙</button></div></div></section>`;
+        $("#printCertificate").parentElement.insertAdjacentHTML("beforebegin",`<div class="panel ornament-border" style="margin-top:15px"><div class="eyebrow">СҮЙІНШІ · АЛҒЫС ХАТ</div><h2>Оқушыға қолдау белгісін жіберіңіз</h2><p class="muted">Ата-ана не мұғалім баланың басты бетіне жылы сөз жібере алады.</p><form id="encouragementForm" class="form-row"><select class="form-input" name="badge" aria-label="Қолдау белгісі"><option>Сүйінші!</option><option>Алғыс хат</option><option>Бәрекелді!</option></select><input class="form-input" name="message" maxlength="100" placeholder="Жарайсың! Сенің қолыңнан келеді."><button class="button gold" type="submit">Жіберу ✨</button></form><h3 style="margin-top:18px">Байғазы тарихы</h3><div class="log-list">${state.baygazyHistory.length?state.baygazyHistory.slice(0,5).map(item=>`<div class="log-row"><div><strong>${esc(item.title)}</strong><small>${esc(item.detail)}</small></div><span class="badge">${esc(item.score)}</span></div>`).join(""):'<p class="empty">Әзірше байғазы берілген жоқ.</p>'}</div></div>`);
+        $("#rewardForm").addEventListener("submit",event=>{event.preventDefault();const form=new FormData(event.currentTarget),name=String(form.get("name")).trim(),price=Number(form.get("price"));if(!name||!Number.isFinite(price)||price<10){toast("Марапат атауы мен кемінде 10 маржан енгізіңіз.");return;}state.parentRewards.push({name,price});state.baygazyHistory.unshift({title:"Жаңа байғазы белгіленді",detail:name,score:`${price} маржан`});saveState();renderParent();toast("Байғазы марапаты қосылды.");});
+        $("#bonusForm").addEventListener("submit",event=>{event.preventDefault();const form=new FormData(event.currentTarget),marjans=Math.floor(Number(form.get("marjans"))),message=String(form.get("message")||"Жарайсың, балам!").trim();if(!Number.isFinite(marjans)||marjans<1||marjans>5000){toast("1–5000 аралығында маржан санын енгізіңіз.");return;}state.marjans+=marjans;state.totalEarnedMarjans+=marjans;state.parentMessage=message||"Жарайсың, балам!";state.activity.unshift({title:"Ата-анадан сүйінші",detail:state.parentMessage,score:`+${marjans} 🦪`});state.baygazyHistory.unshift({title:"Байғазы маржаны",detail:state.parentMessage,score:`+${marjans} маржан`});state.notifications.unshift({id:Date.now(),badge:"Сүйінші!",message:`${state.parentMessage} +${marjans} маржан!`});state.notifications=state.notifications.slice(0,10);state.activity=state.activity.slice(0,20);saveState();playTone([560,740,980]);navigate("home");showPearlReward(marjans);toast(`Ата-анаңнан сүйінші: ${state.parentMessage} +${marjans} маржан!`);});
+        $("#encouragementForm").addEventListener("submit",event=>{event.preventDefault();const form=new FormData(event.currentTarget),badge=String(form.get("badge")),message=String(form.get("message")||"Жарайсың! Сенің қолыңнан келеді.").trim()||"Жарайсың! Сенің қолыңнан келеді.";state.encouragements.unshift({badge,message,date:new Date().toLocaleDateString("kk-KZ")});state.notifications.unshift({id:Date.now(),badge,message});state.notifications=state.notifications.slice(0,10);state.baygazyHistory.unshift({title:badge,detail:message,score:"Қолдау"});saveState();playTone([660,880,1040]);navigate("home");toast(`${badge} ${message}`);});
+        $("#studentName").addEventListener("input",event=>{state.studentName=event.target.value;saveState();$("#certificateName").textContent=state.studentName||"Жарайсың!";});
+        $("#printButton").addEventListener("click",()=>window.print());
+      };
+      const renderHomeStats = () => {
+        updateHeader();
+      };
+      const renderModuleProgress = () => {
+        const overall=Object.keys(modules).reduce((sum,key)=>sum+completedCount(key),0);
+        return `<div class="stat-grid"><div class="stat-box"><strong>🦪 ${state.marjans}</strong><small>білім маржаны</small></div><div class="stat-box"><strong>⭐ ${state.stars}</strong><small>жұлдыз</small></div><div class="stat-box"><strong>${overall}/100</strong><small>тапсырма</small></div></div>`;
+      };
+      const navigate = view => {
+        activeView=view; $$(".nav button").forEach(button=>button.classList.toggle("active",button.dataset.view===view));
+        if(view==="home")renderHome();
+        else if(modules[view])renderModule(view);
+        else if(view==="rewards")renderRewards();
+        else if(view==="parent")renderParent();
+        updateMascot(); window.scrollTo({top:0,behavior:"smooth"});
+      };
+      const wireGoButtons = () => $$("[data-go]").forEach(button=>button.addEventListener("click",()=>navigate(button.dataset.go)));
+      $$(".nav button").forEach(button=>button.addEventListener("click",()=>navigate(button.dataset.view)));
+      $$("[data-grade]").forEach(button=>button.addEventListener("click",()=>{
+        const grade=Number(button.dataset.grade);if(state.grade===grade)return;state.grade=grade;taskIndex=Object.fromEntries(Object.keys(modules).map(key=>[key,0]));taskStartedAt=Date.now();saveState();navigate(activeView);toast(`${grade}-сыныпқа арналған тапсырмалар дайын!`);
+      }));
+      window.addEventListener("resize",()=>{if(activeView==="calligraphy"&&$("#writingCanvas"))renderCalligraphy(taskIndex.calligraphy);});
+      renderHome();renderHomeStats();updateMascot();
+    })();
+  </script>
+</body>
 </html>
