@@ -117,7 +117,11 @@
     .sequence-cue { display: grid; width: 40px; height: 40px; flex: 0 0 auto; place-items: center; border-radius: 12px; background: var(--gold-pale); font-size: 23px; }
     .move-buttons { display: flex; gap: 4px; }
     .move-buttons button { width: 34px; height: 34px; border: 1px solid var(--line); border-radius: 9px; background: white; font-weight: 900; cursor: pointer; }
-    .writing-area { width: 100%; min-height: 140px; padding: 12px; resize: vertical; border: 1px solid var(--line); border-radius: 13px; background: repeating-linear-gradient(white, white 31px, #e8eee4 32px); line-height: 32px; }
+    .writing-area { width: 100%; min-height: 140px; padding: 12px; resize: vertical; border: 1px solid var(--line); border-radius: 13px; background: #fff; color: #264653; -webkit-text-fill-color: #264653; line-height: 1.6; }
+    .writing-area::placeholder { color: #82918b; opacity: 1; }
+    .writing-area:focus { background: #fff; color: #264653; }
+    .form-input, .name-input { color: #264653; -webkit-text-fill-color: #264653; }
+    .form-input::placeholder, .name-input::placeholder { color: #82918b; opacity: 1; }
     .connector { border: 0; border-radius: 99px; padding: 7px 10px; background: var(--gold-pale); font-weight: 900; cursor: pointer; }
     .canvas-layout { display: grid; grid-template-columns: minmax(0, 1fr) 290px; gap: 16px; }
     .canvas-wrap { overflow: hidden; border: 1px solid #e5e8dc; border-radius: 15px; background: #fffefa; }
@@ -224,6 +228,7 @@
       <button data-view="values">Құндылықтар & мәтін талдау</button>
       <button data-view="tongue">Тіл ұстартқыш</button>
       <button data-view="rewards">Ой сандығы</button>
+      <button data-view="pictures">Сурет бойынша мәтін</button>
       <button data-view="parent">Байғазы порталы</button>
     </nav></div>
   </header>
@@ -359,6 +364,228 @@
         ["Басы бар, шашы жоқ, көзі бар, қасы жоқ. Ол не?",["Сарымсақ","Қоян","Шелек"],"Сарымсақ"]
       ];
 
+      const valuesGrade2 = [
+        {
+                "title": "Менің отбасым",
+                "icon": "👨‍👩‍👧‍👦",
+                "category": "Отбасы",
+                "text": "Менің отбасым үлкен әрі тату. Отбасымда әкем, анам, ағам, қарындасым және мен бармын. Әкем жұмыс істейді, анам үй шаруасымен айналысады. Біз бір-бірімізге көмектесеміз. Демалыс күндері бірге серуендеп, қызықты уақыт өткіземіз. Мен өз отбасымды жақсы көремін.",
+                "questions": [
+                        "Отбасында неше адам бар?",
+                        "Демалыс күндері отбасы мүшелері не істейді?",
+                        "Бала өз отбасын қалай сипаттайды?"
+                ]
+        },
+        {
+                "title": "Менің мектебім",
+                "icon": "🏫",
+                "category": "Білім",
+                "text": "Мен мектепте оқимын. Менің мектебім үлкен және жарық. Мектепте көптеген сынып бөлмелері, кітапхана және спорт залы бар. Маған қазақ тілі мен математика сабақтары ұнайды. Мұғалімдеріміз өте мейірімді. Мен мектепке қуана барамын.",
+                "questions": [
+                        "Мектеп қандай?",
+                        "Мектепте қандай бөлмелер бар?",
+                        "Оқушыға қандай сабақтар ұнайды?"
+                ]
+        },
+        {
+                "title": "Күз мезгілі",
+                "icon": "🍂",
+                "category": "Табиғат",
+                "text": "Күз келді. Күн салқындап, ағаштардың жапырақтары сарғая бастады. Жаңбыр жиі жауады. Құстар жылы жаққа ұшып кетеді. Адамдар жылы киімдерін киеді. Күзде жемістер мен көкөністер піседі. Күз – берекелі мезгіл.",
+                "questions": [
+                        "Күзде күн райы қандай болады?",
+                        "Құстар қайда ұшып кетеді?",
+                        "Күзде қандай жемістер мен көкөністер піседі?"
+                ]
+        },
+        {
+                "title": "Менің досым",
+                "icon": "🤝",
+                "category": "Достық",
+                "text": "Менің жақын досым бар. Оның аты – Әли. Ол өте ақылды, көңілді және мейірімді. Біз бірге сабақ оқимыз, футбол ойнаймыз. Әли әрқашан маған көмектеседі. Мен досымды сыйлаймын және онымен бірге уақыт өткізгенді ұнатамын.",
+                "questions": [
+                        "Досының аты кім?",
+                        "Әли қандай бала?",
+                        "Достар бірге не істейді?"
+                ]
+        },
+        {
+                "title": "Табиғатты қорғайық!",
+                "icon": "🌳",
+                "category": "Қамқорлық",
+                "text": "Табиғат – біздің ортақ үйіміз. Біз табиғатты қорғауымыз керек. Ағаштарды сындыруға, гүлдерді жұлуға болмайды. Қоқысты арнайы жәшікке тастау қажет. Құстарға жем беріп, жануарларға қамқорлық жасауымыз керек. Табиғатты аялау – әр адамның міндеті.",
+                "questions": [
+                        "Табиғат неліктен біздің ортақ үйіміз?",
+                        "Қоқысты қайда тастау керек?",
+                        "Табиғатты қорғау үшін қандай әрекеттер жасауымыз қажет?"
+                ]
+        },
+        {
+                "title": "Үлкенге құрмет – кішіге ізет",
+                "icon": "👵",
+                "category": "Құрмет",
+                "text": "Аружан күнде мектепке бара жатқанда жол бойында тұратын әжеге көмектеседі. Бір күні әженің қолындағы ауыр сөмкесін көріп, көтерісіп жіберді. Әже оған батасын беріп, алғысын айтты. Аружан үлкендерді құрметтеу әр адамның міндеті екенін түсінді. Ол әрдайым үлкендерге сәлем беріп, кішілерге қамқор болуға тырысады.",
+                "questions": [
+                        "Аружан әжеге қандай көмек көрсетті?",
+                        "Әже Аружанға не айтты?",
+                        "Үлкендерді құрметтеу дегенді қалай түсінесің?"
+                ]
+        },
+        {
+                "title": "Адалдық – асыл қасиет",
+                "icon": "💎",
+                "category": "Адалдық",
+                "text": "Бір күні Нұрдәулет мектеп дәлізінен әмиян тауып алды. Оның ішінде ақша мен иесінің құжаттары бар еді. Нұрдәулет әмиянды өзіне алмай, бірден сынып жетекшісіне апарып берді. Мұғалім оның адалдығына риза болды. Көп ұзамай әмиян иесіне қайтарылды. Нұрдәулет адал болу – әр адамның бойындағы ең жақсы қасиеттердің бірі екенін түсінді.",
+                "questions": [
+                        "Нұрдәулет мектеп дәлізінен не тауып алды?",
+                        "Ол әмиянды не істеді?",
+                        "Адал адам қандай болуы керек?"
+                ]
+        },
+        {
+                "title": "Достық – баға жетпес байлық",
+                "icon": "🫶",
+                "category": "Достық",
+                "text": "Сыныпқа жаңа оқушы келді. Оның аты – Мадина. Ол ешкімді танымай, үзілісте жалғыз отырды. Мұны байқаған Айша оның жанына барып, танысты. Кейін оны сыныптастарымен таныстырып, бірге ойын ойнауға шақырды. Мадина қуанып, жаңа достар тапты. Айша достықтың мейірімділік пен түсіністіктен басталатынын білді.",
+                "questions": [
+                        "Сыныпқа кім келді?",
+                        "Айша жаңа оқушыға қалай көмектесті?",
+                        "Нағыз достық қандай қасиеттерге негізделеді?"
+                ]
+        },
+        {
+                "title": "Еңбек түбі – береке",
+                "icon": "🌱",
+                "category": "Еңбекқорлық",
+                "text": "Ержан жазғы демалыста атасына ауылға барды. Атасы күн сайын бақшаға барып, көкөністерге күтім жасайтын. Ержан да атасына көмектесіп, ағаштарды суарып, арамшөптерді жұлысты. Бірнеше аптадан кейін бақшадағы көкөністер жайқалып өсті. Атасы немересіне еңбектің арқасында ғана жақсы нәтижеге жетуге болатынын түсіндірді. Ержан еңбекқор болуға уәде берді.",
+                "questions": [
+                        "Ержан жазғы демалыста қайда барды?",
+                        "Ол атасына қандай көмек көрсетті?",
+                        "Еңбекқор болу неліктен маңызды?"
+                ]
+        },
+        {
+                "title": "Бірлік бар жерде – тірлік бар",
+                "icon": "🧹",
+                "category": "Бірлік пен ынтымақ",
+                "text": "Мектепте тазалық күні ұйымдастырылды. Оқушылар мектеп ауласын тазалауға кірісті. Бірі қоқыстарды жинаса, екіншісі гүлдерге су құйды. Тағы бір топ ағаштардың айналасын тазалады. Барлығы бірлесе жұмыс істегендіктен, аула аз уақыт ішінде тап-таза болды. Мұғалім оқушыларға алғысын білдірді. Балалар бірліктің арқасында кез келген жұмысты жеңіл орындауға болатынын түсінді.",
+                "questions": [
+                        "Мектепте қандай іс-шара ұйымдастырылды?",
+                        "Оқушылар қандай жұмыстар атқарды?",
+                        "Бірлік пен ынтымақтың адам өміріндегі маңызы қандай?"
+                ]
+        },
+        {
+          "title": "Кітапханадағы күн",
+          "icon": "📚",
+          "category": "Білім",
+          "text": "Сәрсенбі күні біздің сынып мектеп кітапханасына барды. Кітапханашы апай бізді жылы қарсы алып, жаңа кітаптарды көрсетті. Айсұлу жануарлар туралы кітап таңдады, ал Данияр ертегі алды. Біз кітаптарды таза ұстап, беттерін бүктемеу керектігін білдік. Сабақ соңында әрқайсымыз оқыған кітабымыз туралы қысқаша әңгімеледік. Мен кітапханаға тағы барғым келеді.",
+          "questions": [
+            "Сынып қайда барды?",
+            "Айсұлу мен Данияр қандай кітаптар таңдады?",
+            "Кітапты қалай күтіп ұстау керек?"
+          ]
+        },
+        {
+          "title": "Қысқы қамқорлық",
+          "icon": "🐦",
+          "category": "Қамқорлық",
+          "text": "Қыста күн суытып, жерді қалың қар басты. Ауладағы торғайлар жем іздеп жүрді. Мұны көрген Нұрсұлтан әкесімен бірге ағаштан жемсалғыш жасады. Олар жемсалғышты бұтаққа іліп, ішіне дән салды. Көп ұзамай құстар келіп, жем жей бастады. Нұрсұлтан құстарға күн сайын көмектесуге шешім қабылдады.",
+          "questions": [
+            "Құстар неге жем іздеді?",
+            "Нұрсұлтан әкесімен бірге не жасады?",
+            "Қыста құстарға қалай көмектесуге болады?"
+          ]
+        },
+        {
+          "title": "Әжемнің ақылы",
+          "icon": "👵",
+          "category": "Құрмет",
+          "text": "Демалыста Аяулым әжесінің үйіне қонаққа барды. Әжесі бауырсақ пісіріп, дастарқан жайып жатты. Аяулым қолын жуып, әжесіне ыдыстарды қоюға көмектесті. Тамақтан кейін әжесі оған үлкендерді сыйлау және кішілерге ізет көрсету туралы әңгіме айтты. Аяулым әжесінің сөзін мұқият тыңдады. Ол үйіне қайтқанда анасына да көмектесетінін айтты.",
+          "questions": [
+            "Аяулым демалыста кімге барды?",
+            "Ол әжесіне қалай көмектесті?",
+            "Әжесі қандай ақыл айтты?"
+          ]
+        },
+        {
+          "title": "Жоғалған қарындаш",
+          "icon": "✏️",
+          "category": "Адалдық",
+          "text": "Сабақ үстінде Мәди өз қарындашын таба алмады. Үзілісте ол үстелдің астынан әдемі қарындаш тауып алды. Қарындаш өзінікі болмаса да, Мәди оны қолданғысы келді. Бірақ ол біреудің затын рұқсатсыз алуға болмайтынын есіне түсірді. Мәди қарындашты мұғалімге апарып берді. Біраздан соң оның иесі табылып, Мәдидің адалдығына рақмет айтты.",
+          "questions": [
+            "Мәди қарындашты қайдан тапты?",
+            "Ол табылған қарындашты кімге берді?",
+            "Мәди неге дұрыс әрекет жасады?"
+          ]
+        },
+        {
+          "title": "Көктемгі бақ",
+          "icon": "🌷",
+          "category": "Табиғат",
+          "text": "Көктем келіп, күн жылына бастады. Мектеп ауласындағы ағаштар бүршік жарып, гүлдер өсіп шықты. Біздің сынып аулаға шығып, гүлзарды тазалады. Бір топ балалар жерді қопсытты, ал басқалары гүлдерге су құйды. Мұғалім әр өсімдікке қамқорлық қажет екенін түсіндірді. Бірнеше күннен кейін гүлзар түрлі түсті гүлдерге толды.",
+          "questions": [
+            "Көктемде табиғатта қандай өзгерістер болды?",
+            "Оқушылар гүлзарда не істеді?",
+            "Өсімдіктерге не үшін күтім жасау керек?"
+          ]
+        },
+        {
+          "title": "Спорт күні",
+          "icon": "⚽",
+          "category": "Достық",
+          "text": "Мектебімізде спорт күні өтті. Балалар жүгіру, секіру және доппен ойнау жарыстарына қатысты. Біздің топта Әсет, Жанар және Дамир болды. Жарыс кезінде Дамир сүрініп қалғанда, достары оған көмектесті. Олар жеңіске ғана емес, бір-бірін қолдауға да мән берді. Жарыс соңында барлық қатысушыға алғыс айтылды.",
+          "questions": [
+            "Мектепте қандай іс-шара өтті?",
+            "Дамир сүрінгенде достары не істеді?",
+            "Спортта бір-бірін қолдау неліктен маңызды?"
+          ]
+        },
+        {
+          "title": "Суды үнемдейік",
+          "icon": "💧",
+          "category": "Жауапкершілік",
+          "text": "Айбек таңертең тісін жуып жатқанда суды тоқтатуды ұмытып кетті. Мұны байқаған әпкесі суды босқа ағызбау керектігін айтты. Олар бірге үйдегі крандарды тексерді. Айбек ыдыс жуған кезде де суды үнемдеуге тырысты. Кешке ол отбасына суды үнемдеудің бірнеше жолын айтып берді. Бәрі табиғат байлығын қорғауға уәде етті.",
+          "questions": [
+            "Айбек таңертең нені ұмытып кетті?",
+            "Ол суды үнемдеу үшін не істеді?",
+            "Суды неге үнемдеу керек?"
+          ]
+        },
+        {
+          "title": "Туған жерім",
+          "icon": "🇰🇿",
+          "category": "Отансүйгіштік",
+          "text": "Менің туған жерім – Қазақстан. Біздің елімізде биік таулар, кең далалар, өзендер мен көлдер бар. Жазда отбасымызбен табиғат аясында демаламыз. Біз барған жерімізді таза ұстап, қоқысты жинап кетеміз. Әкем туған жерді сүю оны қорғаудан басталатынын айтады. Мен елімнің табиғатын мақтан тұтамын және оны аялағым келеді.",
+          "questions": [
+            "Бала қай елде тұрады?",
+            "Отбасы табиғат аясында қандай ережені сақтайды?",
+            "Туған жерді сүюді қалай көрсетуге болады?"
+          ]
+        },
+        {
+          "title": "Ортақ жоба",
+          "icon": "🧩",
+          "category": "Бірлік пен ынтымақ",
+          "text": "Мұғалім сыныпқа «Менің арманымдағы мектеп» тақырыбында плакат жасауды тапсырды. Оқушылар төрт топқа бөлінді. Бір топ мектеп ғимаратын салды, екіншісі кітапхана мен спорт залын бейнеледі. Қалған балалар суреттерді бояп, плакатқа жазу жазды. Олар бір-бірінің ойын тыңдап, жұмысты бірге аяқтады. Дайын плакат барлығына ұнады.",
+          "questions": [
+            "Оқушылар қандай тақырыпта плакат жасады?",
+            "Топтар қандай жұмыстар атқарды?",
+            "Олар жұмысты қалай бірге аяқтады?"
+          ]
+        },
+        {
+          "title": "Кішкентай көмек",
+          "icon": "🤲",
+          "category": "Мейірімділік",
+          "text": "Таңертең Әмина мектепке асығып бара жатты. Жолда ол кітаптары жерге шашылып қалған кішкентай баланы көрді. Әмина тоқтап, кітаптарды жинауға көмектесті. Бала оған күлімсіреп рақмет айтты. Әмина сабаққа уақытында жетіп, болған оқиғаны досына айтып берді. Ол кішкентай жақсылықтың өзі адамға қуаныш сыйлайтынын түсінді.",
+          "questions": [
+            "Әмина жолда кімді көрді?",
+            "Ол балаға қалай көмектесті?",
+            "Кішкентай жақсылық адамдарға қандай әсер береді?"
+          ]
+        }
+];
       const calligraphy1 = ["А","Ә","Б","В","Г","Д","Е","Ғ","Қ","Ң","Ө","Ұ","Ү","І","ба-ла","а-на","Апа","Әке","Отансүйгіштік","Дос"];
       const calligraphy2 = ["А","Ә","Б","В","Г","Д","Е","Ғ","Қ","Ң","Ө","Ұ","Ү","І","ба-ла","ә-ке","Оқу – білім бұлағы.","Еңбек түбі – береке.","Досы көпті жау алмайды.","Өнер алды – қызыл тіл."];
       const calligraphyTips = ["Әріпті үлгіге қарап асықпай жаз.","Қаламды жеңіл ұстап, жолдан шықпа.","Әр сызықты анық әрі ұқыпты жүргіз.","Әріптердің арасына орын қалдыр.","Жазуыңды аяқтағанда өзіңе риза бол!"];
@@ -371,7 +598,7 @@
       };
 
       const storiesFor = grade => stories.map((story, i) => ({...story, question: grade === 1 ? "Басты кейіпкер кім?" : "Оқиғаның соңында не болды?", answer: grade === 1 ? story.character : story.ending, choices: grade === 1 ? [story.character, stories[(i+3)%stories.length].character, stories[(i+7)%stories.length].character] : [story.ending, stories[(i+4)%stories.length].ending, stories[(i+9)%stories.length].ending]}));
-      const buildValues = grade => valueRows.map((row,i) => ({category:row[0],icon:row[1],text:grade===1?row[2]:`${row[2]} ${row[6]}`,question:grade===1?"Қандай іс дұрыс?":row[3],good:row[4],bad:row[5],tip:row[6],index:i}));
+      const buildValues = grade => grade === 2 ? valuesGrade2 : valueRows.map((row,i) => ({category:row[0],icon:row[1],text:grade===1?row[2]:`${row[2]} ${row[6]}`,question:grade===1?"Қандай іс дұрыс?":row[3],good:row[4],bad:row[5],tip:row[6],index:i}));
       const buildTongue = grade => {
         const twisters = grade === 1 ? twisters1 : twisters2, riddles = grade === 1 ? riddles1 : riddles2;
         return [...twisters.map((text,i)=>({kind:"twister",text,tip:grade===1?"Әуелі жай айт. Сосын анық қайтала.":"Буындарды анық айтып, біртіндеп жылдамдат.",index:i})),...riddles.map((riddle,i)=>({kind:"riddle",text:riddle[0],options:riddle[1],answer:riddle[2],tip:"Жұмбақтың әр сөзін мұқият тыңда.",index:i+10}))];
@@ -410,9 +637,10 @@
         values: buildValues,
         tongue: buildTongue
       };
-      const taskKey = (module,index=taskIndex[module],grade=state.grade) => `${grade}:${module}:${index}`;
+      const taskKey = (module,index=taskIndex[module],grade=state.grade) => `${grade}:${module === "values" && grade === 2 ? "values-reading-v2" : module}:${index}`;
       const isDone = (module,index=taskIndex[module]) => state.completed.includes(taskKey(module,index));
-      const completedCount = module => Array.from({length:20},(_,i)=>isDone(module,i)).filter(Boolean).length;
+      const taskCount = module => module === "values" && state.grade === 2 ? valuesGrade2.length : 20;
+      const completedCount = module => Array.from({length:taskCount(module)},(_,i)=>isDone(module,i)).filter(Boolean).length;
       const toast = message => {
         const node=$("#toast"); node.textContent=message; node.classList.add("show");
         window.clearTimeout(toastTimer); toastTimer=window.setTimeout(()=>node.classList.remove("show"),2700);
@@ -462,8 +690,8 @@
       const renderHome = () => {
         $("#app").innerHTML=`<section class="view active">
           <div class="hero"><div class="hero-copy"><div class="eyebrow">Қазақ тілі · 1–2-сынып · оқу модульдері</div><h1>Сөз маржаны –<br>ой қазынасы</h1><p>Әріп таны, сөз құра, шағын мәтін оқы. Әр дұрыс қадамға білім маржанын жина!</p><button class="button gold" data-go="vocabulary">Оқуды бастау →</button></div><div class="hero-art" aria-label="Кітап пен жұлдыз"><span class="hero-star">✨</span><span class="hero-book" aria-hidden="true">📖</span></div></div>
-          <div class="home-strip"><h2>Оқу модульдері</h2><span class="badge">${state.grade}-сынып · әр модульде 20 деңгей</span></div>
-          <div class="module-grid">${Object.entries(modules).map(([key,module])=>`<button class="module-card" data-go="${key}"><span class="module-icon">${module.icon}</span><strong>${esc(module.title)}</strong><small>${esc(module.description)} · ${completedCount(key)}/20 орындалды</small><span class="module-arrow">→</span></button>`).join("")}
+          <div class="home-strip"><h2>Оқу модульдері</h2><span class="badge">${state.grade}-сынып · әр модульде оқу тапсырмалары</span></div>
+          <div class="module-grid">${Object.entries(modules).map(([key,module])=>`<button class="module-card" data-go="${key}"><span class="module-icon">${module.icon}</span><strong>${esc(module.title)}</strong><small>${esc(module.description)} · ${completedCount(key)}/${taskCount(key)} орындалды</small><span class="module-arrow">→</span></button>`).join("")}
             <button class="module-card" data-go="rewards"><span class="module-icon">🦪</span><strong>Ой сандығы</strong><small>Білім маржанын жинап, жапсырма мен белгілерді аш.</small><span class="module-arrow">→</span></button>
             <button class="module-card" data-go="parent"><span class="module-icon">🏠</span><strong>Байғазы порталы</strong><small>Ата-ана мен мұғалім баланың оқуын қолдайды.</small><span class="module-arrow">→</span></button>
           </div></section>`;
@@ -480,10 +708,10 @@
         }
         wireGoButtons();
       };
-      const taskControls = (module,index) => `<div class="task-controls"><div><strong>${esc(modules[module].title)} · ${index+1}/20 деңгей</strong><br><small>${isDone(module,index)?"✅ Орындалды":`${completedCount(module)}/20 деңгей орындалды · дұрыс жауапқа +10 маржан`}</small></div><div class="task-nav"><div class="task-dots" aria-label="Деңгейді таңдау">${Array.from({length:20},(_,i)=>`<button class="task-dot ${i===index?"active":""} ${isDone(module,i)?"done":""}" data-task="${i}" title="${i+1}-деңгей" aria-label="${i+1}-деңгейге өту"></button>`).join("")}</div><button class="task-step" data-step="-1" aria-label="Алдыңғы деңгей">←</button><button class="task-step" data-step="1" aria-label="Келесі деңгей">→</button></div></div>`;
+      const taskControls = (module,index) => `<div class="task-controls"><div><strong>${esc(modules[module].title)} · ${index+1}/${taskCount(module)} деңгей</strong><br><small>${isDone(module,index)?"✅ Орындалды":`${completedCount(module)}/${taskCount(module)} деңгей орындалды · дұрыс жауапқа +10 маржан`}</small></div><div class="task-nav"><div class="task-dots" aria-label="Деңгейді таңдау">${Array.from({length:taskCount(module)},(_,i)=>`<button class="task-dot ${i===index?"active":""} ${isDone(module,i)?"done":""}" data-task="${i}" title="${i+1}-деңгей" aria-label="${i+1}-деңгейге өту"></button>`).join("")}</div><button class="task-step" data-step="-1" aria-label="Алдыңғы деңгей">←</button><button class="task-step" data-step="1" aria-label="Келесі деңгей">→</button></div></div>`;
       const shell = (module,index,body) => {
         const title=modules[module].title;
-        $("#app").innerHTML=`<section class="view active"><div class="page-heading"><div><div class="eyebrow">${state.grade}-сынып · ${index+1}/20 деңгей</div><h1>${esc(title)}</h1><p>${esc(modules[module].description)}</p></div><span class="badge">🦪 +10 маржан</span></div>${taskControls(module,index)}${body}</section>`;
+        $("#app").innerHTML=`<section class="view active"><div class="page-heading"><div><div class="eyebrow">${state.grade}-сынып · ${index+1}/${taskCount(module)} деңгей</div><h1>${esc(title)}</h1><p>${esc(modules[module].description)}</p></div><span class="badge">🦪 +10 маржан</span></div>${taskControls(module,index)}${body}</section>`;
         $$(".task-dot").forEach(button=>button.addEventListener("click",()=>setTask(module,Number(button.dataset.task))));
         $$("[data-step]").forEach(button=>button.addEventListener("click",()=>setTask(module,index+Number(button.dataset.step))));
       };
@@ -505,11 +733,11 @@
         else {feedback.textContent="Тағы бір рет ойланып көр. Жауабын мұқият оқы.";playTone([230]);}
       };
       const setTask = (module,index) => {
-        taskIndex[module]=(index+20)%20; taskStartedAt=Date.now(); renderModule(module); updateMascot();
+        taskIndex[module]=((index % taskCount(module))+taskCount(module))%taskCount(module); taskStartedAt=Date.now(); renderModule(module); updateMascot();
       };
       const renderChoiceTask = (module,index,prompt,cue,choices,answer,explanation,extra="") => {
         const done=isDone(module,index);
-        shell(module,index,`<div class="task-card"><div class="panel task-main"><div class="eyebrow">${extra||"Оқып, жауабын таңда"}</div><div class="task-cue" aria-hidden="true">${cue}</div><div class="task-prompt">${esc(prompt)}</div><div class="choices">${choices.map(choice=>`<button class="choice ${done&&choice===answer?"correct":""}" data-answer="${esc(choice)}" ${done?"disabled":""}>${esc(choice)}</button>`).join("")}</div><p class="feedback" aria-live="polite">${done?esc(explanation):""}</p></div><aside class="reward-panel"><div><div class="eyebrow">Маржан қоржыны</div><h2>Кішкентай қадам — үлкен білім!</h2><div class="big">🦪 +10</div><div class="progress-track"><span style="width:${completedCount(module)*5}%"></span></div><p class="muted">${completedCount(module)}/20 деңгей дайын</p></div><span>${modules[module].icon} Тырысып көр!</span></aside></div>`);
+        shell(module,index,`<div class="task-card"><div class="panel task-main"><div class="eyebrow">${extra||"Оқып, жауабын таңда"}</div><div class="task-cue" aria-hidden="true">${cue}</div><div class="task-prompt">${esc(prompt)}</div><div class="choices">${choices.map(choice=>`<button class="choice ${done&&choice===answer?"correct":""}" data-answer="${esc(choice)}" ${done?"disabled":""}>${esc(choice)}</button>`).join("")}</div><p class="feedback" aria-live="polite">${done?esc(explanation):""}</p></div><aside class="reward-panel"><div><div class="eyebrow">Маржан қоржыны</div><h2>Кішкентай қадам — үлкен білім!</h2><div class="big">🦪 +10</div><div class="progress-track"><span style="width:${completedCount(module)*5}%"></span></div><p class="muted">${completedCount(module)}/${taskCount(module)} деңгей дайын</p></div><span>${modules[module].icon} Тырысып көр!</span></aside></div>`);
         $$(".choice").forEach(button=>button.addEventListener("click",()=>{
           const selected=button.dataset.answer;
           if(selected===answer){button.classList.add("correct");$(".feedback").textContent=explanation;awardTask(module,index,modules[module].title);}
@@ -575,6 +803,46 @@
         paintPage();
       };
       const renderValues = index => {
+        if (state.grade === 2) {
+          const tasks = valuesGrade2;
+          const item = tasks[index];
+          if (!item) return;
+          const done = isDone("values", index);
+          const key = `soz-values-answers-2-${index}`;
+          let saved = ["", "", ""];
+          try {
+            const parsed = JSON.parse(localStorage.getItem(key) || "null");
+            if (Array.isArray(parsed) && parsed.length === 3) saved = parsed;
+          } catch (_) {}
+          shell("values",index,`<div class="values-grid">
+            <div class="value-list">${tasks.map((t,i)=>`<button class="value-tab ${i===index?"active":""}" data-value="${i}">${t.icon} ${i+1}. ${esc(t.title)}</button>`).join("")}</div>
+            <div class="panel task-main">
+              <div class="eyebrow">${esc(item.category)} · ${index+1}</div>
+              <h2 style="margin-top:9px">${esc(item.title)}</h2>
+              <div class="value-text">${esc(item.text)}</div>
+              <h3 style="margin-top:20px">Сұрақтар</h3>
+              <p class="muted">Мәтінді оқып, үш сұраққа өз сөзіңмен жауап жаз.</p>
+              ${item.questions.map((q,i)=>`<div style="margin:15px 0"><label style="display:block;font-weight:800;margin-bottom:7px" for="valueAnswer${i}">${i+1}. ${esc(q)}</label><textarea id="valueAnswer${i}" class="writing-area" rows="2" maxlength="600" placeholder="Жауабыңды жаз..." ${done?"readonly":""}>${esc(saved[i]||"")}</textarea></div>`).join("")}
+              <button class="button" id="valueFinish" ${done?'disabled':''}>${done?'Орындалды ✓':'Жауаптарды сақтау ✓'}</button>
+              <p class="feedback" id="valueFeedback" aria-live="polite">${done?'Тамаша! Үш сұраққа жауап бердің.':'Жауаптарың осы құрылғыда сақталады.'}</p>
+            </div></div>`);
+          $$('[data-value]').forEach(button=>button.addEventListener('click',()=>setTask('values',Number(button.dataset.value))));
+          const fields=[0,1,2].map(i=>$("#valueAnswer"+i));
+          const saveAnswers=()=>{try{localStorage.setItem(key,JSON.stringify(fields.map(el=>el.value)));}catch(e){console.warn('Жауаптарды сақтау мүмкін болмады',e);}};
+          fields.forEach(el=>el.addEventListener('input',saveAnswers));
+          $("#valueFinish").addEventListener('click',()=>{
+            const answers=fields.map(el=>el.value.trim());
+            if(answers.some(a=>a.length<3)){$("#valueFeedback").textContent='Барлық үш сұраққа толық жауап жаз.';return;}
+            saveAnswers();
+            if(awardTask('values',index,item.title)){
+              $("#valueFeedback").textContent='Жарайсың! Жауаптарың сақталды. +10 маржан!';
+              $("#valueFinish").disabled=true;
+              fields.forEach(el=>el.readOnly=true);
+            }
+          });
+          return;
+        }
+
         const value=buildValues(state.grade)[index],done=isDone("values",index);
         shell("values",index,`<div class="values-grid"><div class="value-list">${buildValues(state.grade).map((item,i)=>`<button class="value-tab ${i===index?"active":""}" data-value="${i}">${item.icon} ${esc(item.category)} · ${i+1}</button>`).join("")}</div><div class="panel task-main"><div class="eyebrow">${value.icon} ${esc(value.category)} · мәтінді оқы</div><div class="value-text">${esc(value.text)}</div><div class="task-prompt">${esc(value.question)}</div><div class="choices"><button class="choice ${done?"correct":""}" data-value-answer="good" ${done?"disabled":""}>${esc(value.good)}</button><button class="choice" data-value-answer="bad" ${done?"disabled":""}>${esc(value.bad)}</button></div><p class="feedback" id="valueFeedback" aria-live="polite">${done?esc(value.tip):""}</p></div></div>`);
         $$(".value-tab").forEach(button=>button.addEventListener("click",()=>setTask("values",Number(button.dataset.value))));
@@ -602,6 +870,65 @@
         if(module==="tongue")renderTongue(taskIndex[module]);
         updateHeader(); updateMascot();
       };
+
+      // Сурет бойынша әңгіме құрастыру — осы index.html ішіндегі жеке бөлім.
+      // Мұғалім жауаптарды алу үшін Apps Script Web App URL-ін төменге қойыңыз.
+      const PICTURE_SUBMIT_URL = "";
+      const pictureTasks = [
+        {title:"1. Сыныптағы достық",hint:"Суретте не болып жатыр? Қыздар бір-біріне қалай қарым-қатынас жасап тұр?",image:"./images/picture-01.jpg"},
+        {title:"2. Адалдық – асыл қасиет",hint:"Бала не тауып алды? Ол оны кімге беріп тұр?",image:"./images/picture-02.jpg"},
+        {title:"3. Мектеп ауласындағы тазалық",hint:"Оқушылар қандай жұмыс істеп жатыр? Олар не үшін бірге еңбек етіп жүр?",image:"./images/picture-03.jpg"},
+        {title:"4. Еңбек түбі – береке",hint:"Бала атасымен не істеп жүр? Еңбек туралы не айтуға болады?",image:"./images/picture-04.jpg"},
+        {title:"5. Үлкенге құрмет",hint:"Қыз әжеге қандай көмек көрсетіп жатыр? Бұл суреттен қандай құндылықты байқайсың?",image:"./images/picture-05.jpg"},
+        {title:"6. Табиғатты қорғайық",hint:"Балалар табиғатты қалай қорғап жүр? Сен табиғатты қорғау үшін не істер едің?",image:"./images/picture-06.jpg"},
+        {title:"7. Күз мезгілі",hint:"Суреттен күздің қандай белгілерін көріп тұрсың? Құстар мен ауа райы туралы жаз.",image:"./images/picture-07.jpg"},
+        {title:"8. Менің досым",hint:"Екі дос не істеп отыр? Олардың көңіл күйі қандай?",image:"./images/picture-08.jpg"},
+        {title:"9. Менің мектебім",hint:"Суреттегі мектеп қандай? Онда қандай бөлмелер көрсетілген?",image:"./images/picture-09.jpg"},
+        {title:"10. Менің отбасым",hint:"Суреттегі отбасы мүшелері не істеп отыр? Отбасыны қалай сипаттауға болады?",image:"./images/picture-10.jpg"}
+      ];
+      const pictureIllustration = task => `<img src="${task.image}" alt="${esc(task.title)}" style="width:100%;max-height:560px;object-fit:cover;display:block;border-radius:16px">`;
+      let pictureIndex=0;
+      const renderPictures = () => {
+        const task=pictureTasks[pictureIndex];
+        const key=`soz-picture-${state.grade}-${pictureIndex}`;
+        const draft=localStorage.getItem(key)||"";
+        $("#app").innerHTML=`<section class="view active">
+          <div class="page-heading"><div><div class="eyebrow">🖼️ ШЫҒАРМАШЫЛЫҚ ТАПСЫРМА</div><h1>Сурет бойынша әңгіме құрастыру</h1><p>Суретке қарап, өз ойыңды қазақ тілінде жаз. Жауабыңды мұғалімге жібер.</p></div><span class="badge">${state.grade}-сынып · ${pictureIndex+1}/${pictureTasks.length}</span></div>
+          <div class="panel" style="max-width:860px;margin:auto">
+            <div style="display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-bottom:14px"><h2 style="margin:0">${esc(task.title)}</h2><div class="button-row"><button class="button outline small" id="picturePrev" ${pictureIndex===0?'disabled':''}>← Алдыңғы</button><button class="button outline small" id="pictureNext" ${pictureIndex===pictureTasks.length-1?'disabled':''}>Келесі →</button></div></div>
+            ${pictureIllustration(task)}
+            <p class="muted" style="margin:15px 0">${esc(task.hint)} ${state.grade===1?'3–5 сөйлем жаз.':'5–7 сөйлем жаз.'}</p>
+            <form id="pictureForm">
+              <label class="tool-label" for="pictureStudent">Оқушының коды (мұғалім берген)</label><input id="pictureStudent" class="form-input" maxlength="40" placeholder="Мысалы: 2А-07" required autocomplete="off" style="margin-bottom:14px">
+              <label class="tool-label" for="pictureDescription">Сурет бойынша әңгімең</label><textarea id="pictureDescription" class="writing-area" minlength="20" maxlength="3000" rows="6" required placeholder="Мен суретте ... көріп тұрмын.">${esc(draft)}</textarea>
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:14px"><span class="muted" id="pictureCount">0 сөз</span><button class="button" type="submit" id="pictureSubmit">📨 Мұғалімге жіберу</button></div>
+              <p id="pictureFeedback" class="feedback" role="status"></p>
+            </form>
+          </div>
+        </section>`;
+        $("#picturePrev").addEventListener("click",()=>{pictureIndex--;renderPictures();});
+        $("#pictureNext").addEventListener("click",()=>{pictureIndex++;renderPictures();});
+        const textarea=$("#pictureDescription"),count=$("#pictureCount");
+        const updateCount=()=>{const words=textarea.value.trim().split(/\s+/).filter(Boolean).length;count.textContent=`${words} сөз`;};
+        textarea.addEventListener("input",()=>{localStorage.setItem(key,textarea.value);updateCount();});
+        updateCount();
+        $("#pictureForm").addEventListener("submit",async event=>{
+          event.preventDefault();
+          const feedback=$("#pictureFeedback");
+          const student=$("#pictureStudent").value.trim(),description=textarea.value.trim();
+          if(!student||description.length<20){feedback.textContent="Код пен кемінде 20 таңбадан тұратын мәтінді енгіз.";return;}
+          if(!PICTURE_SUBMIT_URL){feedback.textContent="Мұғалімге жіберу әлі бапталмаған. Мұғалім сайт әкімшісіне хабарлассын. Мәтінің осы браузерде сақталды.";return;}
+          const button=$("#pictureSubmit");button.disabled=true;feedback.textContent="Жіберілуде…";
+          try{
+            // Apps Script-ке JSON жолын text/plain ретінде жібереміз (CORS preflight жоқ).
+            // 'no-cors' жауаптың сәттілігін тексеруге мүмкіндік бермейді.
+            await fetch(PICTURE_SUBMIT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({studentCode:student,grade:state.grade,task:task.title,description,submittedAt:new Date().toISOString()})});
+            feedback.textContent="Сұрау жіберілді. Қабылданғанын мұғалімнен нақтыла. Мәтінің осы браузерде сақталған.";
+          }catch(error){feedback.textContent="Желі қатесі. Мәтінің сақталды, қайта байқап көр.";}
+          finally{button.disabled=false;}
+        });
+      };
+
       const renderRewards = () => {
         const stickerShop=[{id:"star",icon:"🌟",name:"Жарқыраған жұлдыз",price:30},{id:"flower",icon:"🌷",name:"Мейірім гүлі",price:50},{id:"book",icon:"📚",name:"Білім кітабы",price:70},{id:"crown",icon:"👑",name:"Тапқырлық тәжі",price:100}];
         $("#app").innerHTML=`<section class="view active"><div class="page-heading"><div><div class="eyebrow">Маржандар жүйесі</div><h1>Ой сандығы мен марапаттар</h1><p>Тапсырманы дұрыс орындасаң, +10 білім маржаны аласың. Маржандарыңа жапсырма ашып, өз қазынаңды жина!</p></div><span class="badge">🦪 ${state.marjans} маржан · барлығы ${state.totalEarnedMarjans} таптың</span></div><div class="split"><div class="panel"><div class="eyebrow">ЖАПСЫРМА ДҮКЕНІ</div><h2>Маржаныңды таңда</h2><div class="reward-list">${stickerShop.map(item=>{const owned=state.stickers.includes(item.id);return `<div class="reward-row"><span class="achievement-icon">${item.icon}</span><div><strong>${item.name}</strong><small>${item.price} маржан</small></div><button class="button small ${owned?"soft":"gold"}" data-buy-sticker="${item.id}" ${owned||state.marjans<item.price?"disabled":""}>${owned?"Ашылды ✓":"Ашу"}</button></div>`;}).join("")}</div></div><div class="panel"><div class="eyebrow">МЕНІҢ ҚАЗЫНАМ</div><h2>Жиналған жапсырмалар</h2><div class="module-grid">${state.stickers.length?state.stickers.map(id=>{const item=stickerShop.find(sticker=>sticker.id===id);return item?`<div class="tile" style="padding:18px;text-align:center"><div style="font-size:38px">${item.icon}</div><strong>${item.name}</strong></div>`:"";}).join(""):'<p class="empty">Алғашқы жапсырмаңды ашу үшін маржан жина!</p>'}</div><h2 style="margin-top:22px">Ата-ананың байғазы марапаттары</h2><div class="reward-list">${state.parentRewards.length?state.parentRewards.map((reward,i)=>`<div class="reward-row"><div><strong>${esc(reward.name)}</strong><small>${reward.price} маржан${state.claimedRewards.includes(i)?" · Берілді":" · Ата-анаңмен келісіп ал"}</small></div>${state.claimedRewards.includes(i)?'<span class="badge">Рақмет!</span>':`<button class="button small" data-claim="${i}" ${state.marjans<reward.price?"disabled":""}>Маржанға алу</button>`}</div>`).join(""):'<p class="muted">Ата-ана марапат қосқанда осында көрінеді.</p>'}</div></div></div></section>`;
@@ -611,7 +938,7 @@
       const renderParent = () => {
         const average=state.completionTimes.length?Math.round(state.completionTimes.reduce((sum,n)=>sum+n,0)/state.completionTimes.length):0;
         const totalDone=state.completed.length;
-        $("#app").innerHTML=`<section class="view active"><div class="page-heading"><div><div class="eyebrow">Ата-ана мен мұғалімге арналған</div><h1>Байғазы порталы</h1><p>Балаңыздың оқуын қолдап, шынайы марапатты бірге белгілеңіз. Бұл бөлімдегі дерек осы құрылғыда сақталады.</p></div><span class="badge">👪 Отбасылық қолдау</span></div><div class="split"><div class="panel"><div class="eyebrow">БАЛАНЫҢ ПРОГРЕСІ</div><h2>Шағын жетістіктер</h2><div class="stat-grid"><div class="stat-box"><strong>🦪 ${state.marjans}</strong><small>қолда бар маржан</small></div><div class="stat-box"><strong>${state.totalEarnedMarjans}</strong><small>барлығы тапқан маржан</small></div><div class="stat-box"><strong>${totalDone}</strong><small>аяқталған деңгей</small></div></div><p class="muted">Орташа тапсырма уақыты: <strong>${average?`${Math.floor(average/60)} мин ${average%60} сек`:"Әзірше дерек жоқ"}</strong></p><div class="achievement-list">${Object.entries(modules).map(([key,module])=>{const count=completedCount(key),percent=count*5;return `<div><div style="display:flex;justify-content:space-between"><strong>${module.icon} ${esc(module.title)}</strong><small>${count}/20 · ${percent}%</small></div><div class="meter"><span style="width:${percent}%"></span></div></div>`;}).join("")}</div></div><div class="panel"><div class="eyebrow">ҮЙДЕГІ МАРАПАТ</div><h2>Өз марапатыңызды қосыңыз</h2><p class="muted">Мысалы: 200 маржан — сүйікті кітабың немесе отбасылық саяхат.</p><form id="rewardForm" class="form-row"><input class="form-input" name="name" maxlength="70" placeholder="Марапат атауы" required><input class="form-input" name="price" type="number" min="10" max="100000" step="10" placeholder="Маржан" required><button class="button" type="submit">Қосу +</button></form><div class="reward-list" style="margin-top:14px">${state.parentRewards.length?state.parentRewards.map((reward,i)=>`<div class="reward-row"><div><strong>${esc(reward.name)}</strong><small>${reward.price} маржан · ${state.claimedRewards.includes(i)?"орындалды":"орындалмаған"}</small></div></div>`).join(""):'<p class="empty">Әзірше марапат қосылмаған.</p>'}</div></div></div><div class="split" style="margin-top:15px"><div class="panel"><div class="eyebrow">БАЙҒАЗЫ МАРЖАНЫ</div><h2>Қолдау білдіріңіз</h2><form id="bonusForm" class="form-row"><input class="form-input" name="marjans" type="number" min="1" max="5000" step="1" placeholder="Маржан саны" required><input class="form-input" name="message" maxlength="100" placeholder="«Жарайсың, балам!»"><button class="button gold" type="submit">Бонус жіберу</button></form></div><div class="panel"><div class="eyebrow">СОҢҒЫ ӘРЕКЕТ</div><h2>Оқу белсенділігі</h2><div class="log-list">${state.activity.length?state.activity.slice(0,5).map(item=>`<div class="log-row"><div><strong>${esc(item.title)}</strong><small>${esc(item.detail)}</small></div><span class="badge">${esc(item.score)}</span></div>`).join(""):'<p class="empty">Әзірше белсенділік жоқ.</p>'}</div></div></div><div class="panel" style="margin-top:15px"><div class="eyebrow">МАРАПАТ ҚАҒАЗЫ</div><div class="certificate" id="printCertificate"><div class="award-icon">🏅</div><p class="eyebrow">ҚҰТТЫҚТАЙМЫЗ!</p><h2>Аптаның үздік әңгімешісі</h2><p>Қызыға оқып, әдемі әңгіме құрастырғаны үшін беріледі.</p><input class="name-input" id="studentName" value="${esc(state.studentName)}" placeholder="Оқушының аты-жөні" aria-label="Оқушының аты-жөні"><p><strong id="certificateName">${esc(state.studentName||"Жарайсың!")}</strong></p><button class="button gold" id="printButton">Басып шығару ⎙</button></div></div></section>`;
+        $("#app").innerHTML=`<section class="view active"><div class="page-heading"><div><div class="eyebrow">Ата-ана мен мұғалімге арналған</div><h1>Байғазы порталы</h1><p>Балаңыздың оқуын қолдап, шынайы марапатты бірге белгілеңіз. Бұл бөлімдегі дерек осы құрылғыда сақталады.</p></div><span class="badge">👪 Отбасылық қолдау</span></div><div class="split"><div class="panel"><div class="eyebrow">БАЛАНЫҢ ПРОГРЕСІ</div><h2>Шағын жетістіктер</h2><div class="stat-grid"><div class="stat-box"><strong>🦪 ${state.marjans}</strong><small>қолда бар маржан</small></div><div class="stat-box"><strong>${state.totalEarnedMarjans}</strong><small>барлығы тапқан маржан</small></div><div class="stat-box"><strong>${totalDone}</strong><small>аяқталған деңгей</small></div></div><p class="muted">Орташа тапсырма уақыты: <strong>${average?`${Math.floor(average/60)} мин ${average%60} сек`:"Әзірше дерек жоқ"}</strong></p><div class="achievement-list">${Object.entries(modules).map(([key,module])=>{const count=completedCount(key),percent=Math.round(100*count/taskCount(key));return `<div><div style="display:flex;justify-content:space-between"><strong>${module.icon} ${esc(module.title)}</strong><small>${count}/${taskCount(key)} · ${percent}%</small></div><div class="meter"><span style="width:${percent}%"></span></div></div>`;}).join("")}</div></div><div class="panel"><div class="eyebrow">ҮЙДЕГІ МАРАПАТ</div><h2>Өз марапатыңызды қосыңыз</h2><p class="muted">Мысалы: 200 маржан — сүйікті кітабың немесе отбасылық саяхат.</p><form id="rewardForm" class="form-row"><input class="form-input" name="name" maxlength="70" placeholder="Марапат атауы" required><input class="form-input" name="price" type="number" min="10" max="100000" step="10" placeholder="Маржан" required><button class="button" type="submit">Қосу +</button></form><div class="reward-list" style="margin-top:14px">${state.parentRewards.length?state.parentRewards.map((reward,i)=>`<div class="reward-row"><div><strong>${esc(reward.name)}</strong><small>${reward.price} маржан · ${state.claimedRewards.includes(i)?"орындалды":"орындалмаған"}</small></div></div>`).join(""):'<p class="empty">Әзірше марапат қосылмаған.</p>'}</div></div></div><div class="split" style="margin-top:15px"><div class="panel"><div class="eyebrow">БАЙҒАЗЫ МАРЖАНЫ</div><h2>Қолдау білдіріңіз</h2><form id="bonusForm" class="form-row"><input class="form-input" name="marjans" type="number" min="1" max="5000" step="1" placeholder="Маржан саны" required><input class="form-input" name="message" maxlength="100" placeholder="«Жарайсың, балам!»"><button class="button gold" type="submit">Бонус жіберу</button></form></div><div class="panel"><div class="eyebrow">СОҢҒЫ ӘРЕКЕТ</div><h2>Оқу белсенділігі</h2><div class="log-list">${state.activity.length?state.activity.slice(0,5).map(item=>`<div class="log-row"><div><strong>${esc(item.title)}</strong><small>${esc(item.detail)}</small></div><span class="badge">${esc(item.score)}</span></div>`).join(""):'<p class="empty">Әзірше белсенділік жоқ.</p>'}</div></div></div><div class="panel" style="margin-top:15px"><div class="eyebrow">МАРАПАТ ҚАҒАЗЫ</div><div class="certificate" id="printCertificate"><div class="award-icon">🏅</div><p class="eyebrow">ҚҰТТЫҚТАЙМЫЗ!</p><h2>Аптаның үздік әңгімешісі</h2><p>Қызыға оқып, әдемі әңгіме құрастырғаны үшін беріледі.</p><input class="name-input" id="studentName" value="${esc(state.studentName)}" placeholder="Оқушының аты-жөні" aria-label="Оқушының аты-жөні"><p><strong id="certificateName">${esc(state.studentName||"Жарайсың!")}</strong></p><button class="button gold" id="printButton">Басып шығару ⎙</button></div></div></section>`;
         $("#printCertificate").parentElement.insertAdjacentHTML("beforebegin",`<div class="panel ornament-border" style="margin-top:15px"><div class="eyebrow">СҮЙІНШІ · АЛҒЫС ХАТ</div><h2>Оқушыға қолдау белгісін жіберіңіз</h2><p class="muted">Ата-ана не мұғалім баланың басты бетіне жылы сөз жібере алады.</p><form id="encouragementForm" class="form-row"><select class="form-input" name="badge" aria-label="Қолдау белгісі"><option>Сүйінші!</option><option>Алғыс хат</option><option>Бәрекелді!</option></select><input class="form-input" name="message" maxlength="100" placeholder="Жарайсың! Сенің қолыңнан келеді."><button class="button gold" type="submit">Жіберу ✨</button></form><h3 style="margin-top:18px">Байғазы тарихы</h3><div class="log-list">${state.baygazyHistory.length?state.baygazyHistory.slice(0,5).map(item=>`<div class="log-row"><div><strong>${esc(item.title)}</strong><small>${esc(item.detail)}</small></div><span class="badge">${esc(item.score)}</span></div>`).join(""):'<p class="empty">Әзірше байғазы берілген жоқ.</p>'}</div></div>`);
         $("#rewardForm").addEventListener("submit",event=>{event.preventDefault();const form=new FormData(event.currentTarget),name=String(form.get("name")).trim(),price=Number(form.get("price"));if(!name||!Number.isFinite(price)||price<10){toast("Марапат атауы мен кемінде 10 маржан енгізіңіз.");return;}state.parentRewards.push({name,price});state.baygazyHistory.unshift({title:"Жаңа байғазы белгіленді",detail:name,score:`${price} маржан`});saveState();renderParent();toast("Байғазы марапаты қосылды.");});
         $("#bonusForm").addEventListener("submit",event=>{event.preventDefault();const form=new FormData(event.currentTarget),marjans=Math.floor(Number(form.get("marjans"))),message=String(form.get("message")||"Жарайсың, балам!").trim();if(!Number.isFinite(marjans)||marjans<1||marjans>5000){toast("1–5000 аралығында маржан санын енгізіңіз.");return;}state.marjans+=marjans;state.totalEarnedMarjans+=marjans;state.parentMessage=message||"Жарайсың, балам!";state.activity.unshift({title:"Ата-анадан сүйінші",detail:state.parentMessage,score:`+${marjans} 🦪`});state.baygazyHistory.unshift({title:"Байғазы маржаны",detail:state.parentMessage,score:`+${marjans} маржан`});state.notifications.unshift({id:Date.now(),badge:"Сүйінші!",message:`${state.parentMessage} +${marjans} маржан!`});state.notifications=state.notifications.slice(0,10);state.activity=state.activity.slice(0,20);saveState();playTone([560,740,980]);navigate("home");showPearlReward(marjans);toast(`Ата-анаңнан сүйінші: ${state.parentMessage} +${marjans} маржан!`);});
@@ -624,13 +951,14 @@
       };
       const renderModuleProgress = () => {
         const overall=Object.keys(modules).reduce((sum,key)=>sum+completedCount(key),0);
-        return `<div class="stat-grid"><div class="stat-box"><strong>🦪 ${state.marjans}</strong><small>білім маржаны</small></div><div class="stat-box"><strong>⭐ ${state.stars}</strong><small>жұлдыз</small></div><div class="stat-box"><strong>${overall}/100</strong><small>тапсырма</small></div></div>`;
+        return `<div class="stat-grid"><div class="stat-box"><strong>🦪 ${state.marjans}</strong><small>білім маржаны</small></div><div class="stat-box"><strong>⭐ ${state.stars}</strong><small>жұлдыз</small></div><div class="stat-box"><strong>${overall}/${Object.keys(modules).reduce((sum,key)=>sum+taskCount(key),0)}</strong><small>тапсырма</small></div></div>`;
       };
       const navigate = view => {
         activeView=view; $$(".nav button").forEach(button=>button.classList.toggle("active",button.dataset.view===view));
         if(view==="home")renderHome();
         else if(modules[view])renderModule(view);
         else if(view==="rewards")renderRewards();
+        else if(view==="pictures")renderPictures();
         else if(view==="parent")renderParent();
         updateMascot(); window.scrollTo({top:0,behavior:"smooth"});
       };
